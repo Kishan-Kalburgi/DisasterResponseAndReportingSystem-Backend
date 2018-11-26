@@ -910,13 +910,13 @@ var DataService = /** @class */ (function () {
     // }
     DataService.prototype.getApplicantsList = function () {
         //   http call
-        return this.http.get('/getApplicantsList');
+        return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
         // return this.http.get('http://localhost:3000/getApplicantsList');
     };
     DataService.prototype.saveApplicantDecision = function (data) {
         // http call  
-        return this.http.put('https://drrs.herokuapp.com/saveApplicationDecision', data);
-        // return this.http.put('http://localhost:3000/saveApplicationDecision', data);
+        // return this.http.put('https://drrs.herokuapp.com/saveApplicationDecision', data);
+        return this.http.put('http://localhost:3000/saveApplicationDecision', data);
     };
     DataService.prototype.getIncidentsList = function () {
         //   http call

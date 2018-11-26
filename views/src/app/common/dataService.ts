@@ -17,15 +17,15 @@ export class DataService {
 
   getApplicantsList() {
     //   http call
-   return this.http.get('/getApplicantsList');
+   return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
     // return this.http.get('http://localhost:3000/getApplicantsList');
 
   }
 
   saveApplicantDecision(data: User) {
     // http call  
-    return this.http.put('https://drrs.herokuapp.com/saveApplicationDecision', data);
-    // return this.http.put('http://localhost:3000/saveApplicationDecision', data);
+    // return this.http.put('https://drrs.herokuapp.com/saveApplicationDecision', data);
+    return this.http.put('http://localhost:3000/saveApplicationDecision', data);
   }
 
 

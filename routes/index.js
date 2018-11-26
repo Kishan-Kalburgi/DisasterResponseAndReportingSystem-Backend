@@ -8,7 +8,7 @@ var team = require("../model/team");
 var signup = require("../model/signup")
 var users = require('../controller/user-controller')
 var multer = require('multer')
-
+var nodemailer = require('nodemailer');
 // push notification
 var FCM = require('fcm-node')
 var serverKey = require('../config/service-account.json') //put the generated private key path here    
@@ -95,6 +95,56 @@ router.put('/saveApplicationDecision', function (req, res, decision) {
   if (req && !req.body) {
     return res.status(403).json({ msg: "Please provide applicant details" })
   }
+// Email Logic
+let transporter = nodemailer.createTransport({
+  host: 'smtp.office365.com',
+  port: 587,
+  secure: false, // true for 465, false for other ports
+  auth: {
+      user: "s530488@nwmissouri.edu", // generated ethereal user
+      pass: "TDqwXa2d4" // generated ethereal password
+  }
+});
+var maillist=[req.body.email,'vineeth.agarwal06@gmail.com']
+// setup email data with unicode symbols
+maillist.toString
+console.log("mail list "+maillist+" email is "+req.body.email)
+var decisionSubject=""
+var decisionMessage=""
+if(req.body.role=="AcceptedApplicant"){
+  decisionSubject="accepted"
+  decisionMessage='Dear Applicant, <br><br> Congratulations! Your application has been accepted as a CERT member. Please access the mobile application to serve to the CERT teams in future. <br><br> Thanks & Regards, <br>Team DRRS'
+}
+else{
+  if(req.body.role=="RejectedApplicant"){
+    decisionSubject="rejected"
+    decisionMessage='Dear Applicant, <br><br> We feel sorry to inform you that your application has been not been accepted as a CERT member at this moment. If interested, please apply again in 3 months.  <br><br> Thanks & Regards, <br>Team DRRS'
+  }
+}
+
+let mailOptions = {
+  from: '"Booo Surprise👻" <s530488@nwmissouri.edu>', // sender address
+  // to: 'vineeth.agarwal06@gmail.com',req.body.role // list of receivers
+  to: maillist, // list of receivers
+  subject: 'DRRS application '+decisionSubject, // Subject line
+  text: '', // plain text body
+  html: decisionMessage // html body
+};
+
+// send mail with defined transport object
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+      return console.log(error);
+  }
+  console.log('Message sent: %s', info.messageId);
+  // Preview only available when sending through an Ethereal account
+  console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+});
+// Email Logic ends
+
   console.log("req is " + req.body)
   console.log("role is " + req.body.role)
   var id = req.body._id;
@@ -104,8 +154,6 @@ router.put('/saveApplicationDecision', function (req, res, decision) {
     }
     else {
       res.status(200).json({ msg: "applicant decision updated successfully", data: data })
-
-
     }
   });
 })
@@ -123,29 +171,6 @@ router.get('/getApplicantsList', function (req, res, next) {
     }
   })
 });
-
-//last applicant record
-router.get('/getapplicantLast',
-  function (req, res, next) {
-    applicant.find({}, function (err, results) {
-      var lastRecord
-      // console.log(results.length);
-      if (results.length > 0) {
-        lastRecord = results[results.length - 1]
-      }
-      if (err) {
-        res.status(403).json({
-          msg: "something bad",
-          err
-        })
-      }
-      else {
-        res.status(200).json({
-          msg: "applicant record fetched successfully", data: lastRecord
-        })
-      }
-    })
-  });
 
 // save incident - kishan
 router.post('/saveIncident', function (req, res, next) {
@@ -309,7 +334,6 @@ router.get('/getTeamsById/:id', function (req, res, next) {
   })
 });
 
-
 //save team-Sreevani Anoohya Tadiboina
 router.post('/saveTeam', function (req, res, next) {
   // Cheks of the request has been made and the request has no body
@@ -379,5 +403,6 @@ router.get('/certification/:id', function (req, res, next) {
   console.log("enered certification" + req.params.id)
   res.status(200).download("./public/assets/upload/" + req.params.id);
 });
+
 
 module.exports = router;
