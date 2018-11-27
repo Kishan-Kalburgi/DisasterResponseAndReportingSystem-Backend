@@ -22,6 +22,13 @@ export class DataService {
 
   }
 
+  getMembersList() {
+    //   http call
+  //  return this.http.get('https://drrs.herokuapp.com/getMembersList');
+    return this.http.get('http://localhost:3000/getMembersList');
+
+  }
+
   saveApplicantDecision(data: User) {
     // http call  
     // return this.http.put('https://drrs.herokuapp.com/saveApplicationDecision', data);

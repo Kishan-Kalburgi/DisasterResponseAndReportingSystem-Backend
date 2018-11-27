@@ -66,7 +66,7 @@ export class CreateTeamsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getApplicantsList()
+    this.dataService.getMembersList()
       .subscribe((data) => {
         this.applicants = data['data'];
         this.dataSource = new MatTableDataSource<Applicant>(this.applicants);

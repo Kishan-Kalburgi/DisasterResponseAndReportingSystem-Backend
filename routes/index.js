@@ -176,6 +176,20 @@ router.get('/getApplicantsList', function (req, res, next) {
   })
 });
 
+// get members List
+// These are the one who are applying for CERT Team
+router.get('/getMembersList', function (req, res, next) {
+  console.log("entered here")
+  applicant.find({ role: "AcceptedApplicant" }, function (err, results) {
+    if (err) {
+      res.status(403).json({ msg: "something bad", err })
+    }
+    else {
+      res.status(200).json({ msg: "members record fetched successfully", data: results })
+    }
+  })
+});
+
 // save incident - kishan
 router.post('/saveIncident', function (req, res, next) {
   if (req && !req.body) {
