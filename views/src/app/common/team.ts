@@ -3,7 +3,7 @@ import { Applicant } from "./applicant"
 export class Team {
 
     teamID: string;
-    // teamName: string;
+    teamName: string;
     incidentID: string;
     isActive: boolean;
     leader: string;

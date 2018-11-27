@@ -7,6 +7,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { DataService } from '../common/dataService';
 import { Team } from '../common/team';
 import { TeamdialogComponent } from '../teamdialog/teamdialog.component';
+import { TouchSequence } from 'selenium-webdriver';
 
 export interface Members {
   value: string;
@@ -59,7 +60,8 @@ export class CreateTeamsComponent implements OnInit {
       members: [],
       leader: '',
       asstLeader: '',
-      isActive: false
+      isActive: false,
+      teamName: ''
     });
   }
 
@@ -84,7 +86,8 @@ export class CreateTeamsComponent implements OnInit {
     this.team.incidentID = this.inciID;
     this.team.leader = this.signupForm.value.leader;
     this.team.asstLeader = this.signupForm.value.asstLeader;
-    console.log(this.signupForm.value.leader);
+    this.team.teamName = this.signupForm.value.teamName;
+    console.log(this.signupForm.value.teamName);
     console.log(this.team);
     //make http req. only if form is valid
     this.dialogref.open(TeamdialogComponent, {
