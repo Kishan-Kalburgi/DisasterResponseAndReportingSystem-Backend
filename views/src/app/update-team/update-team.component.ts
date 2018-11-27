@@ -17,7 +17,7 @@ export class UpdateTeamComponent implements OnInit {
   team: Team;
   newTeamID: string;
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'county'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'county', 'dob', 'skills'];
   dataSource: Applicant[];
 
   constructor(public route: ActivatedRoute, private dataService: DataService) { }
