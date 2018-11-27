@@ -93,6 +93,15 @@ export class CreateTeamsComponent implements OnInit {
   });
   }
 
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   // dialogue()
   // {
   //   this.dialogref.open(TeamdialogComponent, {

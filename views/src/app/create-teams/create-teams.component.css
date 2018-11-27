@@ -12,6 +12,23 @@
   margin: auto;
 }
 
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.filter-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field-filter {
+  font-size: 20px;
+  width: 100%;
+}
+
 table {
   width: 100%;
 }
