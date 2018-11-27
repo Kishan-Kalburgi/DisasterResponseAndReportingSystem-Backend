@@ -1,56 +1,130 @@
 <!--
-  Assigned to Chandra Mouli
+  Assigned to Chandra mouli
  -->
- <!-- @Author Chandra Mouli Kantipudi -->
- <!-- Header for team details page -->
- <div class="container">
-  <h1 class="pageHeading mat-display-1">{{ team.teamID }} Members</h1>
+<!-- @Author Chandra Mouli Kantipudi -->
+<!-- Page not yet completed -->
+<div class="container">
+  <!-- Header for the page -->
+  <h1>Update Team</h1>
   <hr>
-  <b>Leader:</b> {{ team.leader }}
-  <br>
-  <b>Assistant Leader:</b> {{ team.asstLeader }}
-  <div class="example-container mat-elevation-z8">
-  <!-- Table is provide with the team members details -->
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
- 
-     <!--- Note that these columns can be defined in any order.
-           The actual rendered columns are set as a property on the row definition" -->
- 
-     <!-- firstName Column -->
-     <ng-container matColumnDef="firstName">
-       <th mat-header-cell *matHeaderCellDef> First Name </th>
-       <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
-     </ng-container>
- 
-     <!-- lastName Column -->
-     <ng-container matColumnDef="lastName">
-       <th mat-header-cell *matHeaderCellDef> Last Name </th>
-       <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
-     </ng-container>
- 
-     <!-- Email Column -->
-     <ng-container matColumnDef="email">
-       <th mat-header-cell *matHeaderCellDef> Email </th>
-       <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-     </ng-container>
- 
-     <!-- County Column -->
-     <ng-container matColumnDef="county">
-       <th mat-header-cell *matHeaderCellDef> County </th>
-       <td mat-cell *matCellDef="let element"> {{element.county}} </td>
-     </ng-container>
- 
-     <!-- Skills Column -->
-     <!-- <ng-container matColumnDef="skills">
-         <th mat-header-cell *matHeaderCellDef> Skills </th>
-         <td mat-cell *matCellDef="let element"> {{element.skills}} </td>
-       </ng-container> -->
- 
-     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-   </table>
-  </div>
-  <br>
-  <button mat-raised-button color="warn" [routerLink]="['/teamsById', team.incidentID]"> Cancel </button>
-   </div>
- 
+
+  <!-- Form to input the team details -->
+  <form novalidate (ngSubmit)="onCreate(createTeam)" #createTeam="ngForm">
+
+    <div class="form-group">
+      <label for="team">
+          <b>Team Name</b>
+        </label>
+      <!--Input for team name -->
+      <input type="text" class="form-control" 
+      id = "teamName" name ="teamName"
+      ngModel
+      [value]="teamName"
+      required
+      placeholder={{team.teamName}} required>
+        <br>
+
+      <!-- TeamID should autogenerate -->
+      <!-- <label for="teamID">
+        <b>Team ID :</b>
+      </label>
+      {{a}} -->
+    </div>
+
+    <!-- Table -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- First Name Column
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> First Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.firstName }} </mat-cell>
+      </ng-container> -->
+
+      <!-- First Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+
+      <!-- Last Name Column-->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+        <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="county">
+        <th mat-header-cell *matHeaderCellDef> County </th>
+        <td mat-cell *matCellDef="let element"> {{element.county}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="skills">
+        <th mat-header-cell *matHeaderCellDef> Skills </th>
+        <td mat-cell *matCellDef="let element"> {{element.skills}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+      </tr>
+    </table>
+    <br>
+
+    <mat-form-field>
+      <mat-select placeholder="Select Leader" id="leader" name="leader" 
+      ngModel
+      [value]="leader"
+      required>
+        <mat-option *ngFor="let leader of selection.selected" [value]="leader.firstName + leader.lastName">
+          {{leader.firstName}} {{leader.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-select placeholder="Select Assistant Leader" id="asstLeader" name="asstLeader"
+      ngModel
+      [value]="asstLeader"
+      required>
+        <mat-option *ngFor="let asstLeader of selection.selected" [value]="asstLeader.firstName + asstLeader.lastName">
+          {{asstLeader.firstName}} {{asstLeader.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <!-- Button provided to create team -->
+    <!-- <button class="btn primary"> Create Team</button> -->
+    <div class="button-row">
+       <!-- <button  mat-raised-button color = "primary" (click)="dialogue()">Create Team</button> -->
+      <button mat-raised-button color="primary"> Create </button>
+      <button mat-raised-button color="warn" [routerLink]="['/teamsById', inciID]"> Cancel </button>
+    </div>
+
+  </form>
+</div>

@@ -32,9 +32,10 @@ table {
     max-height: 500px;
   }
   
-  .table-header{
-    font-size: 18px;
+  .mat-header-cell{
+    font-size: 22px;
     color: black;
+    font-weight: bold;
   }
   
   

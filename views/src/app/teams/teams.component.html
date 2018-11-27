@@ -29,10 +29,10 @@
    <mat-card-content >
      <!-- Team name -->
      <a [routerLink] = "['/team1Details', item._id]">
-     <h2>{{ item.teamName }}</h2>
+     <h2><b>{{ item.teamName }}</b></h2>
      </a>
-     <p><b>Leader: {{ item.leader }}</b></p>
-     <p><b>AsstLeader: {{ item.asstLeader }}</b></p>
+     <p><b>Leader: {{ item.leader }}</b><br>
+     <b>AsstLeader: {{ item.asstLeader }}</b></p>
    </mat-card-content>
    <mat-card-actions>
       <!-- Report button is provided to retrive report of the incident module-->
