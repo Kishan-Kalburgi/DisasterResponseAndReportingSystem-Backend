@@ -14,7 +14,7 @@ var teamSchema = new Schema({
         type: Boolean,
         default: 'true',
       },
-    // teamName: String,
+    teamName: String,
     members: [{
         firstName: String,
         lastName: String,

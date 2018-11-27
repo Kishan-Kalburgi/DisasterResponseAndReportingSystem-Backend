@@ -12,13 +12,17 @@
   <form novalidate (ngSubmit)="onCreate(createTeam)" #createTeam="ngForm">
 
     <div class="form-group">
-      <!-- <label for="team">
+      <label for="team">
           <b>Team Name</b>
-        </label> -->
+        </label>
       <!--Input for team name -->
-      <!-- <input type="text" class="form-control" [ngModel]="team.teamname" name="team name" teamname #teamname="ngModel" id="inputteamname"
+      <input type="text" class="form-control" 
+      id = "teamName" name ="teamName"
+      ngModel
+      [value]="teamName"
+      required
           placeholder="Enter Team Name" required>
-        <br> -->
+        <br>
 
       <!-- TeamID should autogenerate -->
       <label for="teamID">
