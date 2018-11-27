@@ -5,23 +5,23 @@ Schema = mongoose.Schema,
 var userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        requried: [true, "Please provide the firstName"]
+        requried: [true, "Please provide the First Name"]
     },
     lastName: {
         type: String,
-        required: [true, "Please provide the firstName"]
+        required: [true, "Please provide the Last Name"]
     },
     email: {
         type: String,
         // unique: true,
-        required: [true, "Please provide the firstName"]
+        required: [true, "Please provide the Email"]
     },
     dob: {
         type: Date
     },
     password: {
         type: String,
-        required: [true, "Please provide the firstName"]
+        required: [true, "Please provide the Password"]
     },
     mobileNumber: {
         type: String
@@ -69,6 +69,10 @@ var userSchema = new mongoose.Schema({
         type: String,
         enum: ['ADMIN', 'APPLICANT', 'MEMBER'],
         default: 'APPLICANT',
+    },  
+
+    tempResetPassword: {
+        type: String
     }
 });
 
@@ -105,3 +109,5 @@ userSchema.methods.authenticate = function (password) {
     return this.password === this.hashPassword(password);
 };
 module.exports = mongoose.model('user', userSchema);
+
+module.exports.hashPassword = userSchema.methods.hashPassword;

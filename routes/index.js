@@ -74,6 +74,10 @@ router.route('/signin').post(users.signin, users.saveTokenNRespond);
 // Signup route for a user
 router.route('/signup').post(users.signup);
 
+router.route('/resetPassword/:email').get(users.resetPassword);
+
+router.route('/updatePassword/:tempPassword/:newPassword').get(users.updatePassword);
+
 // Check user logged in or not
 router.route('/isLoggedIn').get(users.isLoggedIn);
 
@@ -95,7 +99,19 @@ router.put('/saveApplicationDecision', function (req, res, decision) {
   if (req && !req.body) {
     return res.status(403).json({ msg: "Please provide applicant details" })
   }
-// Email Logic
+
+  var id = req.body._id;
+  // applicant.findOneAndUpdate({email:"aron@gmail.com"}, { $set: { email:"aron@yahoos.com" } }, { new: true }, function (err, data) {
+  applicant.findByIdAndUpdate(id, { $set: { role: req.body.role } }, { new: true }, function (err, data) {
+    if (err) {
+      res.status(403).json({ msg: "something bad", err: err })
+    }
+    else {
+      res.status(200).json({ msg: "applicant decision updated successfully", data: data })
+    }
+  });
+
+  // Email Logic
 let transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
   port: 587,
@@ -144,18 +160,6 @@ transporter.sendMail(mailOptions, (error, info) => {
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 });
 // Email Logic ends
-
-  console.log("req is " + req.body)
-  console.log("role is " + req.body.role)
-  var id = req.body._id;
-  applicant.findByIdAndUpdate(id, { $set: { role: req.body.role } }, { new: true }, function (err, data) {
-    if (err) {
-      res.status(403).json({ msg: "something bad", err: err })
-    }
-    else {
-      res.status(200).json({ msg: "applicant decision updated successfully", data: data })
-    }
-  });
 })
 
 // get applicants List

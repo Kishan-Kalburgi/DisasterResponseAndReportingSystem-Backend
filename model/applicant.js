@@ -17,6 +17,7 @@ var applicantSchema = new mongoose.Schema({
     files: String,
     limitations: String,
     pushNotification: String,
+    // newField:String,
     role: { type: String, default: "Applicant" }
 });
 
