@@ -82,7 +82,7 @@
 
         <ng-container matColumnDef="dob">
           <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-          <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.dob | date }} </td>
         </ng-container>
 
         <ng-container matColumnDef="county">
