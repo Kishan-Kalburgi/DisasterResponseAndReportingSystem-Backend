@@ -10,8 +10,8 @@
 .incident-card {
     /* max-width: 235px; */
     width: 255px;
-    min-height: 200px;
-    max-height: 200x;
+    min-height: 230px;
+    max-height: 230x;
     margin-top: 2em;
 }
 
