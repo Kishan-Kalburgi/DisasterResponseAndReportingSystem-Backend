@@ -37,3 +37,11 @@
 .table-cell {
   font-size: 15px;
 }
+
+.buttons {
+  font-size: 1em;
+}
+
+.button-row button {
+  margin-right: 8px;
+}
