@@ -190,6 +190,18 @@ router.get('/getMembersList', function (req, res, next) {
   })
 });
 
+router.get('/getRejectedMembersList', function (req, res, next) {
+  console.log("entered here")
+  applicant.find({ role: "RejectedApplicant" }, function (err, results) {
+    if (err) {
+      res.status(403).json({ msg: "something bad", err })
+    }
+    else {
+      res.status(200).json({ msg: "members record fetched successfully", data: results })
+    }
+  })
+});
+
 // save incident - kishan
 router.post('/saveIncident', function (req, res, next) {
   if (req && !req.body) {

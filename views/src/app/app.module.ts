@@ -36,6 +36,8 @@ import { AuthService } from './auth/auth.service';
 import { UpdateTeamComponent } from './update-team/update-team.component';
 import { TeamdeleteComponent } from './teamdelete/teamdelete.component';
 import { LogindialogComponent } from './logindialog/logindialog.component';
+import { AcceptedApplicantsComponent } from './accepted-applicants/accepted-applicants.component';
+import { RejectedApplicantsComponent } from './rejected-applicants/rejected-applicants.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { LogindialogComponent } from './logindialog/logindialog.component';
     TeamdialogComponent,
     UpdateTeamComponent,
     TeamdeleteComponent,
-    LogindialogComponent
+    LogindialogComponent,
+    AcceptedApplicantsComponent,
+    RejectedApplicantsComponent
   ],
   
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
