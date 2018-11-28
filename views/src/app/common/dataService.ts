@@ -17,8 +17,8 @@ export class DataService {
 
   getApplicantsList() {
     //   http call
-  //  return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
-    return this.http.get('http://localhost:3000/getApplicantsList');
+   return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
+    // return this.http.get('http://localhost:3000/getApplicantsList');
 
   }
 
