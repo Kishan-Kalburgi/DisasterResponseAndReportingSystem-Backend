@@ -910,8 +910,8 @@ var DataService = /** @class */ (function () {
     // }
     DataService.prototype.getApplicantsList = function () {
         //   http call
-        return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
-        // return this.http.get('http://localhost:3000/getApplicantsList');
+        //  return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
+        return this.http.get('http://localhost:3000/getApplicantsList');
     };
     DataService.prototype.saveApplicantDecision = function (data) {
         // http call  
@@ -1714,7 +1714,7 @@ module.exports = ".pageHeading {\r\n  margin: auto;\r\n}\r\n\r\n.text-style {\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <h1 class=\"pageHeading mat-display-1\">Applicant Details:</h1>\r\n    <!-- mat-dialog-title -->\r\n    <hr>\r\n    <mat-dialog-content>\r\n      <!-- <div class=\"container\"> -->\r\n  <div class=\"row text-style\">\r\n    <div class=\"col\">\r\n      <h3><u>Personal Details:</u></h3>\r\n      <p><b>First Name: </b>{{ user.firstName }}</p>\r\n      <p><b>Second Name: </b>{{ user.lastName }}</p>\r\n      <p><b>Email Id: </b>{{ user.email }}</p>\r\n      <p><b>Date of Birth: </b>{{ user.dob | date: 'dd/MM/yyyy' }}</p>\r\n      <p><b>Mobile Number: </b> {{ user.mobileNumber }}</p>\r\n      <h3><u>Address: </u></h3>\r\n      {{ user.address1 }},<br>\r\n      {{ user.address2 }}, {{ user.county }},<br>\r\n      {{ user.city }}, {{ user.state }}, {{ user.country }}\r\n    </div>\r\n    <div class=\"col\">\r\n      <h3><u>Additional Details:</u></h3>\r\n      <p><b>Skills: </b> {{ user.skills }} </p>\r\n      <p><b>Lisence Number: </b> {{ user.licenseNumber }} </p>\r\n      <p><b>Limitations: </b>{{ user.limitations }}</p>\r\n      <!-- <p *ngIf='user.files'><b>Certification: </b><a id=\"file\" href=\"http://localhost:3000/certification\">{{ user.files }}</a></p> -->\r\n      <p *ngIf='user.files'><b>Certification: </b>\r\n        <!-- <span class=\"files\" (click)=\"downloadFile()\">{{ user.files }}</span> -->\r\n        <a id=\"file\" href=\"{{temp}}\" >{{ user.files }}</a>\r\n      </p>\r\n      <p *ngIf='!user.files'><b>Certification: </b>No files uploaded</p>\r\n    </div>\r\n  </div>\r\n  <!-- </div> -->\r\n    <!-- <strong>{{data}}</strong> -->\r\n  </mat-dialog-content>\r\n  <hr>\r\n  <mat-dialog-actions>\r\n    <button mat-raised-button color=\"primary\" (click)=\"accept()\">Accept</button>\r\n    <button mat-raised-button color=\"warn\" (click)=\"deny()\">Deny</button>\r\n  </mat-dialog-actions>\r\n  </div>\r\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>"
+module.exports = "<div>\r\n    <h1 class=\"pageHeading mat-display-1\">Applicant Details:</h1>\r\n    <!-- mat-dialog-title -->\r\n    <hr>\r\n    <mat-dialog-content>\r\n      <!-- <div class=\"container\"> -->\r\n  <div class=\"row text-style\">\r\n    <div class=\"col\">\r\n      <h3><u>Personal Details:</u></h3>\r\n      <p><b>First Name: </b>{{ user.firstName }}</p>\r\n      <p><b>Second Name: </b>{{ user.lastName }}</p>\r\n      <p><b>Email Id: </b>{{ user.email }}</p>\r\n      <p><b>Date of Birth: </b>{{ user.dob | date: 'dd/MM/yyyy' }}</p>\r\n      <p><b>Mobile Number: </b> {{ user.mobileNumber }}</p>\r\n      <h3><u>Address: </u></h3>\r\n      {{ user.address1 }},<br>\r\n      {{ user.address2 }}, {{ user.county }},<br>\r\n      {{ user.city }}, {{ user.state }}, {{ user.country }}\r\n    </div>\r\n    <div class=\"col\">\r\n      <h3><u>Additional Details:</u></h3>\r\n      <p><b>Skills: </b> {{ user.skills }} </p>\r\n      <p><b>Lisence Number: </b> {{ user.licenseNumber }} </p>\r\n      <p><b>Limitations: </b>{{ user.limitations }}</p>\r\n      <!-- <p *ngIf='user.files'><b>Certification: </b><a id=\"file\" href=\"http://localhost:3000/certification\">{{ user.files }}</a></p> -->\r\n      <p *ngIf='user.files'><b>Certification: </b>\r\n        <a id=\"file\" href=\"{{temp}}\" >{{ filename }}</a>\r\n      </p>\r\n      <p *ngIf='!user.files'><b>Certification: </b>No files uploaded</p>\r\n    </div>\r\n  </div>\r\n  <!-- </div> -->\r\n    <!-- <strong>{{data}}</strong> -->\r\n  </mat-dialog-content>\r\n  <hr>\r\n  <mat-dialog-actions>\r\n    <button mat-raised-button color=\"primary\" (click)=\"accept()\">Accept</button>\r\n    <button mat-raised-button color=\"warn\" (click)=\"deny()\">Deny</button>\r\n  </mat-dialog-actions>\r\n  </div>\r\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>"
 
 /***/ }),
 
@@ -1763,14 +1763,17 @@ var MyDialogComponentComponent = /** @class */ (function () {
         this.data = data;
         this.dialogResult = "";
         this.temp = "";
+        this.filename = "";
     }
     MyDialogComponentComponent.prototype.ngOnInit = function () {
         this.user = this.data;
-        var file = "John.PNG";
-        // var file=this.user.files;
-        this.temp = "/certification/" + file;
-        var tempup = "http://localhost:3000/public/assets/upload/";
-        var href = tempup + this.user.files;
+        var file = this.user.files;
+        // var file="disasters.jpg";
+        var filearr = file.split("\\");
+        console.log(filearr);
+        this.filename = filearr[filearr.length - 1];
+        console.log("file is " + this.user.files);
+        this.temp = "http://localhost:3000/certification/" + this.filename;
         // document.getElementById("file").setAttribute('href', "http://localhost:3000/certifications");
         // $("#file").href=
         // $("#file").attr("href", "https://www.w3schools.com/jquery/");

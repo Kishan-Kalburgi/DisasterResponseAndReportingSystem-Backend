@@ -24,8 +24,7 @@
       <p><b>Limitations: </b>{{ user.limitations }}</p>
       <!-- <p *ngIf='user.files'><b>Certification: </b><a id="file" href="http://localhost:3000/certification">{{ user.files }}</a></p> -->
       <p *ngIf='user.files'><b>Certification: </b>
-        <!-- <span class="files" (click)="downloadFile()">{{ user.files }}</span> -->
-        <a id="file" href="{{temp}}" >{{ user.files }}</a>
+        <a id="file" href="{{temp}}" >{{ filename }}</a>
       </p>
       <p *ngIf='!user.files'><b>Certification: </b>No files uploaded</p>
     </div>
