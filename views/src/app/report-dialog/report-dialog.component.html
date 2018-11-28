@@ -21,7 +21,7 @@
     <p><b>Utilities: </b>{{ report.utilities }}</p>
     <p><b>Hazmat: </b>{{ report.hazmat }}</p>
     <p><b>Others: </b>{{ report.others }}</p>    
-    <p *ngIf='report.files'><b>Certification: </b><a href="http://localhost:3000/certification">{{ report.files }}</a></p>
+    <p *ngIf='report.files'><b>Certification: </b><a href={{temp}}>{{ filename }}</a></p>
     <p *ngIf='!report.files'><b>Certification: </b>No files uploaded</p>
   </div>
 </div>
