@@ -1,15 +1,9 @@
-<!--
-  Assigned to Sreevani and kishan
- -->
-
 <div class="container">
   <!-- Header for Review Applications -->
-<h1 class="pageHeading mat-display-1">Review Applications</h1>
+<h1 class="pageHeading mat-display-1">Rejected Applicants</h1>
 <hr>
-<div class="button-row">
- <button routerLink="/acceptedApplicants" mat-raised-button color="primary">Accepted</button>
- <button routerLink="/rejectedApplicants" mat-raised-button color="primary" color="warn">Rejected</button>
-</div>
+<button mat-raised-button color="warn" routerLink = "/reviewApplication"><i class="fas fa-long-arrow-alt-left fa-3x"></i></button>
+<br>
 <br>
 <div class="table-container mat-elevation-z8">
   <div class="filter-header">
@@ -60,6 +54,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+</div>
 </div>

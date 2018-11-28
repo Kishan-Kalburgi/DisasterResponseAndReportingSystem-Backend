@@ -14,6 +14,8 @@ import { ArchivedIncidentsComponent } from './archived-incidents/archived-incide
 import { ReportComponent } from './report/report.component';
 import { COPComponent } from './cop/cop.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AcceptedApplicantsComponent } from './accepted-applicants/accepted-applicants.component';
+import { RejectedApplicantsComponent } from './rejected-applicants/rejected-applicants.component';
 
 const routes: Routes = [
   { path: 'createIncident', component: CreateIncidentComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'team1Details/:item._id', component: Team1DetailsComponent },
   { path: 'updateTeam/:item._id', component: UpdateTeamComponent },
   { path: 'archivedIncidents', component: ArchivedIncidentsComponent },
+  { path: 'acceptedApplicants', component: AcceptedApplicantsComponent },
+  { path: 'rejectedApplicants', component: RejectedApplicantsComponent },
   // { path: 'report', component: ReportComponent },
   { path: 'reportById/:item.incidentID', component: ReportComponent },
   { path: 'cop', component: COPComponent },
