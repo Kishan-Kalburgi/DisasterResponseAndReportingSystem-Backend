@@ -94,6 +94,19 @@ router.get('/getMemberList', function (req, res, next) {
   })
 });
 
+router.get('/getUser/:email', function (req, res, next) {
+  User.find({email:req.params.email}, function (err, results) {
+    if (err) {
+      res.status(403).json({ msg: "something bad", err })
+    }
+    else {
+      res.status(200).json({ msg: "user record fetched successfully", data: results })
+      console.log(results)
+    }
+  })
+});
+
+
 
 router.put('/saveApplicationDecision', function (req, res, decision) {
   if (req && !req.body) {
