@@ -910,8 +910,8 @@ var DataService = /** @class */ (function () {
     // }
     DataService.prototype.getApplicantsList = function () {
         //   http call
-        //  return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
-        return this.http.get('http://localhost:3000/getApplicantsList');
+        return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
+        // return this.http.get('http://localhost:3000/getApplicantsList');
     };
     DataService.prototype.getMembersList = function () {
         //   http call
@@ -1788,7 +1788,8 @@ var MyDialogComponentComponent = /** @class */ (function () {
         console.log(filearr);
         this.filename = filearr[filearr.length - 1];
         console.log("file is " + this.user.files);
-        this.temp = "http://localhost:3000/certification/" + this.filename;
+        // this.temp="http://localhost:3000/certification/"+this.filename
+        this.temp = "https://drrs.herokuapp.com/certification/" + this.filename;
         // document.getElementById("file").setAttribute('href', "http://localhost:3000/certifications");
         // $("#file").href=
         // $("#file").attr("href", "https://www.w3schools.com/jquery/");
