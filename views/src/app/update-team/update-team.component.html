@@ -9,7 +9,7 @@
   <hr>
 
   <!-- Form to input the team details -->
-  <form novalidate (ngSubmit)="onCreate(createTeam)" #createTeam="ngForm">
+  <form novalidate (ngSubmit)="onUpdate(updateTeam)" #updateTeam="ngForm">
 
     <div class="form-group">
       <label for="team">
@@ -18,8 +18,8 @@
       <!--Input for team name -->
       <input type="text" class="form-control" 
       id = "teamName" name ="teamName"
-      ngModel
-      [value]=team.teamName
+      
+      [(ngModel)]=team.teamName
       required
           placeholder="Enter Team Name" required>
         <br>
@@ -103,8 +103,8 @@
     <br>
 
     <mat-form-field>
-      <mat-select placeholder="Select Leader" id="leader" name="leader" ngModel [value]="leader" required>
-        <mat-option *ngFor="let leader of selection.selected" [value]="leader.firstName + leader.lastName">
+      <mat-select placeholder="Select Leader" id="leader" name="leader" [(ngModel)]="team.leader" required>
+        <mat-option *ngFor="let leader of selection.selected"  [value]="leader.firstName + leader.lastName">
           {{leader.firstName}} {{leader.lastName}}
         </mat-option>
       </mat-select>
@@ -112,7 +112,7 @@
     <br>
 
     <mat-form-field>
-      <mat-select placeholder="Select Assistant Leader" id="asstLeader" name="asstLeader" ngModel [value]="asstLeader"
+      <mat-select placeholder="Select Assistant Leader" id="asstLeader" name="asstLeader"  [(ngModel)]="team.asstLeader"
         required>
         <mat-option *ngFor="let asstLeader of selection.selected" [value]="asstLeader.firstName + asstLeader.lastName">
           {{asstLeader.firstName}} {{asstLeader.lastName}}
@@ -125,7 +125,7 @@
     <!-- <button class="btn primary"> Create Team</button> -->
     <div class="button-row">
       <!-- <button  mat-raised-button color = "primary" (click)="dialogue()">Create Team</button> -->
-      <button mat-raised-button color="primary"> Create </button>
+      <button mat-raised-button color="primary"> Update </button>
       <button mat-raised-button color="warn" [routerLink]="['/teamsById', team.incidentID]"> Cancel </button>
     </div>
 
