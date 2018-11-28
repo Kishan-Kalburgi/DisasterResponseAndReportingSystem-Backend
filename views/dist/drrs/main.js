@@ -1928,7 +1928,7 @@ module.exports = ".pageHeading {\r\n    margin: auto;\r\n  }\r\n  \r\n  .text-st
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <h1 class=\"pageHeading mat-display-1\">Report Details:</h1>\r\n  <!-- mat-dialog-title -->\r\n  <hr>\r\n  <mat-dialog-content>\r\n    <!-- <div class=\"container\"> -->\r\n<div class=\"row text-style\">\r\n  <div class=\"col\">\r\n    <p><b>Reported By: </b>{{ report.reportedBy }}</p>\r\n    <p><b>Incident Name: </b>{{ report.incidentName }}</p>\r\n    <p><b>location: </b>{{ report.location.lat + \" \" + report.location.lng }}</p>\r\n    <h3><u>Casualties: </u></h3>\r\n    <p class=\"text-danger font-weight-bold\">Red: {{ report.casualties.red }}</p> \r\n    <p class=\"text-warning font-weight-bold\">Yellow: {{ report.casualties.yellow }}</p> \r\n    <p class=\"text-success font-weight-bold\">Green: {{ report.casualties.green }}</p> \r\n    <p class=\"text-dark font-weight-bold\">Black: {{ report.casualties.black }}</p> \r\n  </div>\r\n  <div class=\"col\">\r\n    <p><b>Structural Damage: </b> {{ report.structuralDamage }} </p>\r\n    <p><b>Fire: </b> {{ report.fire }} </p>\r\n    <p><b>Utilities: </b>{{ report.utilities }}</p>\r\n    <p><b>Hazmat: </b>{{ report.hazmat }}</p>\r\n    <p><b>Others: </b>{{ report.others }}</p>    \r\n    <p *ngIf='report.files'><b>Certification: </b><a href=\"http://localhost:3000/certification\">{{ report.files }}</a></p>\r\n    <p *ngIf='!report.files'><b>Certification: </b>No files uploaded</p>\r\n  </div>\r\n</div>\r\n\r\n</mat-dialog-content>\r\n<hr>\r\n<mat-dialog-actions>\r\n  <button mat-raised-button color=\"primary\" (click)=\"onOk()\">Ok</button>\r\n</mat-dialog-actions>\r\n</div>"
+module.exports = "<div>\r\n  <h1 class=\"pageHeading mat-display-1\">Report Details:</h1>\r\n  <!-- mat-dialog-title -->\r\n  <hr>\r\n  <mat-dialog-content>\r\n    <!-- <div class=\"container\"> -->\r\n<div class=\"row text-style\">\r\n  <div class=\"col\">\r\n    <p><b>Reported By: </b>{{ report.reportedBy }}</p>\r\n    <p><b>Incident Name: </b>{{ report.incidentName }}</p>\r\n    <p><b>location: </b>{{ report.location.lat + \" \" + report.location.lng }}</p>\r\n    <h3><u>Casualties: </u></h3>\r\n    <p class=\"text-danger font-weight-bold\">Red: {{ report.casualties.red }}</p> \r\n    <p class=\"text-warning font-weight-bold\">Yellow: {{ report.casualties.yellow }}</p> \r\n    <p class=\"text-success font-weight-bold\">Green: {{ report.casualties.green }}</p> \r\n    <p class=\"text-dark font-weight-bold\">Black: {{ report.casualties.black }}</p> \r\n  </div>\r\n  <div class=\"col\">\r\n    <p><b>Structural Damage: </b> {{ report.structuralDamage }} </p>\r\n    <p><b>Fire: </b> {{ report.fire }} </p>\r\n    <p><b>Utilities: </b>{{ report.utilities }}</p>\r\n    <p><b>Hazmat: </b>{{ report.hazmat }}</p>\r\n    <p><b>Others: </b>{{ report.others }}</p>    \r\n    <p *ngIf='report.files'><b>Certification: </b><a href={{temp}}>{{ filename }}</a></p>\r\n    <p *ngIf='!report.files'><b>Certification: </b>No files uploaded</p>\r\n  </div>\r\n</div>\r\n\r\n</mat-dialog-content>\r\n<hr>\r\n<mat-dialog-actions>\r\n  <button mat-raised-button color=\"primary\" (click)=\"onOk()\">Ok</button>\r\n</mat-dialog-actions>\r\n</div>"
 
 /***/ }),
 
@@ -1965,10 +1965,18 @@ var ReportDialogComponent = /** @class */ (function () {
         this.thisDialogRef = thisDialogRef;
         this.data = data;
         this.ref = ref;
+        this.filename = "";
+        this.temp = "";
     }
     ReportDialogComponent.prototype.ngOnInit = function () {
         this.report = this.data;
         console.log(this.report);
+        var file = this.report.files;
+        var filearr = file.split("\\");
+        console.log(filearr);
+        this.filename = filearr[filearr.length - 1];
+        // console.log("file is "+this.user.files)
+        this.temp = "http://localhost:3000/certification/" + this.filename;
     };
     ReportDialogComponent.prototype.onOk = function () {
         this.ref.closeAll();

@@ -27,7 +27,7 @@ router.post('/saveApplicant', (req, res) => {
     if (err) {
       return res.status(403).json({ message: err });
     }
-    console.log(req.files)
+    // console.log(req.files)
     var applicantObj = new applicant(JSON.parse(req.body.formData));
     console.log(applicantObj)
     applicantObj.save(function (err, data) {

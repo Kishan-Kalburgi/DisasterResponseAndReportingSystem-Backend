@@ -8,7 +8,8 @@ import { Report } from '../common/report';
   styleUrls: ['./report-dialog.component.css']
 })
 export class ReportDialogComponent implements OnInit {
-
+  filename=""
+  temp=""
   report: Report;
   constructor(
     public thisDialogRef: MatDialogRef<ReportDialogComponent>, 
@@ -18,6 +19,14 @@ export class ReportDialogComponent implements OnInit {
   ngOnInit() {
     this.report = this.data;
     console.log(this.report);
+
+     var file=this.report.files;
+      var filearr=file.split("\\")
+      console.log(filearr)
+     this.filename=filearr[filearr.length-1]  
+    // console.log("file is "+this.user.files)
+    this.temp="http://localhost:3000/certification/"+this.filename
+
   }
 
   onOk() {
