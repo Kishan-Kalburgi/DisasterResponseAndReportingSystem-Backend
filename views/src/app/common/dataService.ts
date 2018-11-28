@@ -24,22 +24,22 @@ export class DataService {
 
   getMembersList() {
     //   http call
-  //  return this.http.get('https://drrs.herokuapp.com/getMembersList');
-    return this.http.get('http://localhost:3000/getMembersList');
+   return this.http.get('https://drrs.herokuapp.com/getMembersList');
+    // return this.http.get('http://localhost:3000/getMembersList');
 
   }
 
   getRejectedMembersList() {
     //   http call
-  //  return this.http.get('https://drrs.herokuapp.com/getRejectedMembersList');
-    return this.http.get('http://localhost:3000/getRejectedMembersList');
+   return this.http.get('https://drrs.herokuapp.com/getRejectedMembersList');
+    // return this.http.get('http://localhost:3000/getRejectedMembersList');
 
   }
 
   saveApplicantDecision(data: User) {
     // http call  
-    // return this.http.put('https://drrs.herokuapp.com/saveApplicationDecision', data);
-    return this.http.put('http://localhost:3000/saveApplicationDecision', data);
+    return this.http.put('https://drrs.herokuapp.com/saveApplicationDecision', data);
+    // return this.http.put('http://localhost:3000/saveApplicationDecision', data);
   }
 
 
@@ -63,8 +63,8 @@ export class DataService {
 
   updateTeam(data) {
     // http call  
-    // return this.http.put('https://drrs.herokuapp.com/updateTeam', data);
-    return this.http.put('http://localhost:3000/updateTeam', data);
+    return this.http.put('https://drrs.herokuapp.com/updateTeam', data);
+    // return this.http.put('http://localhost:3000/updateTeam', data);
   }
 
   deleteTeam(data) {
@@ -107,8 +107,8 @@ export class DataService {
   }
 
   getFileById() {
-    return this.http.get('http://localhost:3000/certification/');
-    // return this.http.get('https://drrs.herokuapp.com/certification/' + data);
+    // return this.http.get('http://localhost:3000/certification/');
+    return this.http.get('https://drrs.herokuapp.com/certification/');
   }
 
 
