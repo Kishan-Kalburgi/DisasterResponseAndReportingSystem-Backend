@@ -78,4 +78,13 @@ export class ReportComponent implements OnInit {
       this.dialogResult = result;
     });
   }
+  report()
+  {
+    
+    // this.router.navigate(['/report', {
+      this.router.navigate(['/createreport']
+    );
+    console.log("entered create report ")
+
+}
 }

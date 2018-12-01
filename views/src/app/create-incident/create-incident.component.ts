@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Incident } from '../common/incident';
 import { DataService } from '../common/dataService';
+import { MatDialog } from '@angular/material';
+import { IncidentsuccessfulComponent } from '../incidentsuccessful/incidentsuccessful.component';
 
 @Component({
   selector: 'app-create-incident',
@@ -12,7 +14,7 @@ export class CreateIncidentComponent implements OnInit {
 
   incident: Incident;
   date = new Date;
-  constructor(private router: Router, private dataService: DataService) {
+  constructor(private router: Router, private dataService: DataService, public dialogref: MatDialog) {
     this.incident = new Incident({
       incidentID: '',
       incidentName: '',
@@ -58,5 +60,12 @@ export class CreateIncidentComponent implements OnInit {
       // tslint:disable-next-line:prefer-const
       day = ('0' + date.getDate()).slice(-2);
     return [date.getFullYear(), mnth, day].join('');
+  }
+  dialog()
+  {
+    this.dialogref.open(IncidentsuccessfulComponent, {
+      width:'600px',
+      // data:item
+  });
   }
 }
