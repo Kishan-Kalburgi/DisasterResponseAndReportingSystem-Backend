@@ -46,4 +46,15 @@
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-card-actions>
+      <!-- Report button is provided to retrive report of the incident module-->
+      <!-- <button mat-raised-button color="primary" (click)="report(item.incidentID)">Report</button> -->
+      <button routerLink = "/createreport" mat-raised-button color="primary" (click) ="report()">Reports</button>
+      <!-- Team button is provided to view team and its members in the incident module -->
+     
+      <!-- <button mat-raised-button color="primary" routerLink="/teams">Team</button> -->
+      <!-- Archive button is provided to archive the incident module -->
+      
+    </mat-card-actions>
   </div>
+  

@@ -38,6 +38,8 @@ import { TeamdeleteComponent } from './teamdelete/teamdelete.component';
 import { LogindialogComponent } from './logindialog/logindialog.component';
 import { AcceptedApplicantsComponent } from './accepted-applicants/accepted-applicants.component';
 import { RejectedApplicantsComponent } from './rejected-applicants/rejected-applicants.component';
+import { IncidentsuccessfulComponent } from './incidentsuccessful/incidentsuccessful.component';
+import { CreatereportComponent } from './createreport/createreport.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { RejectedApplicantsComponent } from './rejected-applicants/rejected-appl
     TeamdeleteComponent,
     LogindialogComponent,
     AcceptedApplicantsComponent,
-    RejectedApplicantsComponent
+    RejectedApplicantsComponent,
+    IncidentsuccessfulComponent,
+    CreatereportComponent
   ],
   
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -88,7 +92,9 @@ import { RejectedApplicantsComponent } from './rejected-applicants/rejected-appl
     ArchivedialogComponent,
     TeamdialogComponent,
     TeamdeleteComponent,
-    LogindialogComponent
+    LogindialogComponent,
+    IncidentsuccessfulComponent,
+    CreatereportComponent
   ],
   
   providers: [AuthService, AuthGuard],
