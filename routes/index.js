@@ -443,6 +443,22 @@ router.get('/getTeamList', function (req, res, next) {
   })
 });
 
+router.get('/getLocation/:locationName', function (req, res, next) {
+  console.log("entered location")
+const googleMapsClient = require('@google/maps').createClient({
+  key: 'AIzaSyB954EX24ldvc9K55mjhdei_wg8Ly5shKQ'
+});  
+console.log("entered location 1")
+googleMapsClient.geocode({
+  address: req.params.locationName
+}, function(err, response) {
+  if (!err) {
+    var location=response.json.results[0].geometry.location;
+
+    res.status(200).json({ msg: "team record fetched successfully", data: response })
+  }
+});
+});
 // get team by id
 router.get('/getTeam/:id', function (req, res, next) {
   team.findById(req.params.id, function (err, results) {
