@@ -67,36 +67,47 @@ module.exports.saveTokenNRespond = saveTokenNRespond;
  */
 var signup = function (req, res) {
   // Init user and add missing fields
+
   var user = new User(req.body);
-  // user.dob = new Date();  //harcoded
+  console.log(req.body.email+" user email "+user.email)
+  User.findOne({ email: req.body.email }, function (err, doc) {
+    console.log("doc is "+doc)
+    // doc is a Document
+    if (doc==null) {/*
+      console.log(err)*/
+      user.save(function (err) {
+        if (err) {/*
+          console.log(err)*/
+          res.status(389).json({ message: err });
+        } else {
+          res.status(200).json({ message: "User signed up successfully" });
+        }
+      });
+
+    } else {
+      res.status(401).json({ message: "User with this email exists already" });
+    }
+  });  // user.dob = new Date();  //harcoded
   console.log(user)
   // Then save the user
-  user.save(function (err) {
-    if (err) {/*
-      console.log(err)*/
-      res.status(389).json({ message: err });
-    } else {
-      res.status(200).json({ message: "User signed up successfully" });
-    }
-  });
 };
 module.exports.signup = signup;
 
 
 var updatePassword = function (req, res) {
-  console.log("Entered update with email " + req.params.tempPassword+ " "+req.params.newPassword );
-  tempPWD=req.params.tempPassword 
-  newPWD=req.params.newPassword 
+  console.log("Entered update with email " + req.params.tempPassword + " " + req.params.newPassword);
+  tempPWD = req.params.tempPassword
+  newPWD = req.params.newPassword
   // find salt
   // var temp=User.find({tempResetPassword:"J3aE3F18Cb3"}, 'salt', function (err, docs) {
   // })
-  var newPassword=""
-   User.findOne({ tempResetPassword:tempPWD}, function (err, doc){
+  var newPassword = ""
+  User.findOne({ tempResetPassword: tempPWD }, function (err, doc) {
     // doc is a Document
-    User.salt=doc.salt
-     newPassword=User.hashPassword(newPWD)
-    console.log("password is "+newPassword)
-  
+    User.salt = doc.salt
+    newPassword = User.hashPassword(newPWD)
+    console.log("password is " + newPassword)
+
     User.findOneAndUpdate({ tempResetPassword: tempPWD }, { $set: { password: newPassword } }, { new: true }, function (err, data) {
       if (err) {
         res.status(403).json({ msg: "something bad", err: err })
@@ -108,18 +119,18 @@ var updatePassword = function (req, res) {
   });
 };
 
-  // console.log(temp.email)
+// console.log(temp.email)
 module.exports.updatePassword = updatePassword;
 
 
 /**
  * Reset 
  */
-var receivedEmail=""
+var receivedEmail = ""
 
 var resetPassword = function (req, res) {
   console.log("Entered reset with email " + req.params.email);
-  receivedEmail=req.params.email
+  receivedEmail = req.params.email
   tempResetPWD = resetPasswordEmail();
   User.findOneAndUpdate({ email: receivedEmail }, { $set: { tempResetPassword: tempResetPWD } }, { new: true }, function (err, data) {
     if (err) {
@@ -144,7 +155,7 @@ function resetPasswordEmail() {
       pass: "TDqwXa2d4" // generated ethereal password
     }
   });
-  var maillist = ['teamsynergic18@gmail.com',receivedEmail]
+  var maillist = ['teamsynergic18@gmail.com', receivedEmail]
   // setup email data with unicode symbols
   maillist.toString
   console.log("mail list " + maillist)
@@ -161,7 +172,7 @@ function resetPasswordEmail() {
     to: maillist, // list of receivers
     subject: 'DRRS application password reset', // Subject line
     text: '', // plain text body
-    html: "Your temporary password is " + tempResetPassword +". Please use this in reset password page of mobile app to reet your password "// html body
+    html: "Your temporary password is " + tempResetPassword + ". Please use this in reset password page of mobile app to reet your password "// html body
   };
 
   // send mail with defined transport object
