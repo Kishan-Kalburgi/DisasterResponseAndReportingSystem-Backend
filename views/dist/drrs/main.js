@@ -139,6 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cop_cop_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./cop/cop.component */ "./src/app/cop/cop.component.ts");
 /* harmony import */ var _accepted_applicants_accepted_applicants_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./accepted-applicants/accepted-applicants.component */ "./src/app/accepted-applicants/accepted-applicants.component.ts");
 /* harmony import */ var _rejected_applicants_rejected_applicants_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./rejected-applicants/rejected-applicants.component */ "./src/app/rejected-applicants/rejected-applicants.component.ts");
+/* harmony import */ var _createreport_createreport_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./createreport/createreport.component */ "./src/app/createreport/createreport.component.ts");
 // Assigned to Kishan
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -146,6 +147,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -179,7 +181,9 @@ var routes = [
     { path: 'cop', component: _cop_cop_component__WEBPACK_IMPORTED_MODULE_12__["COPComponent"] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"] },
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: '' },
+    // CreatereportComponent
+    { path: 'createreport', component: _createreport_createreport_component__WEBPACK_IMPORTED_MODULE_15__["CreatereportComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -372,12 +376,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logindialog_logindialog_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./logindialog/logindialog.component */ "./src/app/logindialog/logindialog.component.ts");
 /* harmony import */ var _accepted_applicants_accepted_applicants_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./accepted-applicants/accepted-applicants.component */ "./src/app/accepted-applicants/accepted-applicants.component.ts");
 /* harmony import */ var _rejected_applicants_rejected_applicants_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./rejected-applicants/rejected-applicants.component */ "./src/app/rejected-applicants/rejected-applicants.component.ts");
+/* harmony import */ var _incidentsuccessful_incidentsuccessful_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./incidentsuccessful/incidentsuccessful.component */ "./src/app/incidentsuccessful/incidentsuccessful.component.ts");
+/* harmony import */ var _createreport_createreport_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./createreport/createreport.component */ "./src/app/createreport/createreport.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -440,7 +448,9 @@ var AppModule = /** @class */ (function () {
                 _teamdelete_teamdelete_component__WEBPACK_IMPORTED_MODULE_29__["TeamdeleteComponent"],
                 _logindialog_logindialog_component__WEBPACK_IMPORTED_MODULE_30__["LogindialogComponent"],
                 _accepted_applicants_accepted_applicants_component__WEBPACK_IMPORTED_MODULE_31__["AcceptedApplicantsComponent"],
-                _rejected_applicants_rejected_applicants_component__WEBPACK_IMPORTED_MODULE_32__["RejectedApplicantsComponent"]
+                _rejected_applicants_rejected_applicants_component__WEBPACK_IMPORTED_MODULE_32__["RejectedApplicantsComponent"],
+                _incidentsuccessful_incidentsuccessful_component__WEBPACK_IMPORTED_MODULE_33__["IncidentsuccessfulComponent"],
+                _createreport_createreport_component__WEBPACK_IMPORTED_MODULE_34__["CreatereportComponent"]
             ],
             schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]],
             imports: [
@@ -462,7 +472,9 @@ var AppModule = /** @class */ (function () {
                 _archivedialog_archivedialog_component__WEBPACK_IMPORTED_MODULE_24__["ArchivedialogComponent"],
                 _teamdialog_teamdialog_component__WEBPACK_IMPORTED_MODULE_25__["TeamdialogComponent"],
                 _teamdelete_teamdelete_component__WEBPACK_IMPORTED_MODULE_29__["TeamdeleteComponent"],
-                _logindialog_logindialog_component__WEBPACK_IMPORTED_MODULE_30__["LogindialogComponent"]
+                _logindialog_logindialog_component__WEBPACK_IMPORTED_MODULE_30__["LogindialogComponent"],
+                _incidentsuccessful_incidentsuccessful_component__WEBPACK_IMPORTED_MODULE_33__["IncidentsuccessfulComponent"],
+                _createreport_createreport_component__WEBPACK_IMPORTED_MODULE_34__["CreatereportComponent"]
             ],
             providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_27__["AuthService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_26__["AuthGuard"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]],
@@ -1291,7 +1303,7 @@ module.exports = ".container {\r\n  margin-top: 1em;\r\n}\r\n\r\n.pageHeading {\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\r\n  Assigned to Hemanth\r\n -->\r\n<div class=\"container\">\r\n  <!-- Header for the Create Incident page -->\r\n  <h1 class=\"pageHeading mat-display-1\">Create Incident</h1>\r\n  <hr>\r\n</div>\r\n\r\n<div class=\"createContainer\">\r\n\r\n  <!-- Form provided to input details for incident details -->\r\n  <form novalidate (submit)=\"onCreate(createInc)\" #createInc=\"ngForm\">\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"incidentName\">\r\n        <b>Incident Name</b>\r\n      </label>\r\n      <!-- Input for incident name -->\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incident.incidentName\" name=\"incidentName\" #incidentName=\"ngModel\"\r\n        id=\"inputincidentName\" placeholder=\"Enter incident\" required>\r\n      <!--\r\n      incident name error block\r\n      by Kishan\r\n    -->\r\n      <!-- Input validation for incident name-->\r\n      <div *ngIf=\"(incidentName.invalid && ( incidentName.touched || incidentName.dirty)) || isSubmitted\" class=\"col-sm-7 text-danger\">\r\n        <div *ngIf=\"incidentName.errors?.required\" class=\"mat-body-1\">\r\n          Please enter the incident Name\r\n        </div>\r\n      </div>\r\n\r\n      <label for=\"location\">\r\n        <b>Location</b>\r\n      </label>\r\n      <!-- Input field for location name -->\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incident.location\" name=\"location\" location #location=\"ngModel\"\r\n        id=\"inputlocation\" placeholder=\"Enter location\" required>\r\n      <!--\r\n      location error block\r\n      by Kishan\r\n    -->\r\n      <!-- Input validation for location -->\r\n      <div *ngIf=\"(location.invalid && ( location.touched || location.dirty)) || isSubmitted\" class=\"col-sm-6 text-danger\">\r\n        <div *ngIf=\"location.errors?.required\" class=\"mat-body-1\">\r\n          Please enter the location\r\n        </div>\r\n      </div>\r\n\r\n      <!-- Select date block -->\r\n      <label for=\"date\">\r\n        <b>Date</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incident.date\" name=\"date\" #date=\"ngModel\" id=\"inputdate\"\r\n        value=\"incident.date\" disabled>\r\n      <!--\r\n      date error block\r\n      by Kishan\r\n    -->\r\n      <!-- Validtion for date block -->\r\n      <!-- <div *ngIf=\"(date.invalid && ( date.touched || date.dirty)) || isSubmitted\" class=\"col-sm-6 text-danger\">\r\n      <div *ngIf=\"date.errors?.required\">\r\n        Please enter the date\r\n      </div>\r\n    </div> -->\r\n\r\n      <!-- Select time block -->\r\n      <label for=\"time\">\r\n        <b>Time</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incident.time\" name=\"time\" #time=\"ngModel\" id=\"inputtime\"\r\n        value=\"incident.date\" disabled>\r\n      <!--\r\n      time error block\r\n      by Kishan\r\n    -->\r\n      <!-- Validation for time block -->\r\n      <!-- <div *ngIf=\"(time.invalid && ( time.touched || time.dirty)) || isSubmitted\" class=\"col-sm-6 text-danger\">\r\n      <div *ngIf=\"time.errors?.required\">\r\n        Please enter the time\r\n      </div>\r\n    </div> -->\r\n\r\n      <label for=\"description\">\r\n        <b>Description</b>\r\n      </label>\r\n      <!-- Input field for description name -->\r\n      <textarea type=\"text\" class=\"form-control\" [ngModel]=\"incident.description\" name=\"description\" description\r\n        #description=\"ngModel\" id=\"inputdescription\" placeholder=\"Enter description\" required></textarea>\r\n      <!--\r\n        description error block\r\n        by Kishan\r\n      -->\r\n      <!-- Input validation for description -->\r\n      <div *ngIf=\"(description.invalid && ( description.touched || description.dirty)) || isSubmitted\" class=\"col-sm-7 text-danger\">\r\n        <div *ngIf=\"description.errors?.required\" class=\"mat-body-1\">\r\n          Please enter the description\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Button provided to Create Incident -->\r\n    <div class=\"button-row\">\r\n      <button mat-raised-button color=\"primary\" type=\"submit\"> Create </button>\r\n      <button mat-raised-button color=\"warn\" routerLink=\"/dashboard\"> Cancel </button>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
+module.exports = "<!--\r\n  Assigned to Hemanth\r\n -->\r\n<div class=\"container\">\r\n  <!-- Header for the Create Incident page -->\r\n  <h1 class=\"pageHeading mat-display-1\">Create Incident</h1>\r\n  <hr>\r\n</div>\r\n\r\n<div class=\"createContainer\">\r\n\r\n  <!-- Form provided to input details for incident details -->\r\n  <form novalidate (submit)=\"onCreate(createInc)\" #createInc=\"ngForm\">\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"incidentName\">\r\n        <b>Incident Name</b>\r\n      </label>\r\n      <!-- Input for incident name -->\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incident.incidentName\" name=\"incidentName\" #incidentName=\"ngModel\"\r\n        id=\"inputincidentName\" placeholder=\"Enter incident\" required>\r\n      <!--\r\n      incident name error block\r\n      by Kishan\r\n    -->\r\n      <!-- Input validation for incident name-->\r\n      <div *ngIf=\"(incidentName.invalid && ( incidentName.touched || incidentName.dirty)) || isSubmitted\" class=\"col-sm-7 text-danger\">\r\n        <div *ngIf=\"incidentName.errors?.required\" class=\"mat-body-1\">\r\n          Please enter the incident Name\r\n        </div>\r\n      </div>\r\n\r\n      <label for=\"location\">\r\n        <b>Location</b>\r\n      </label>\r\n      <!-- Input field for location name -->\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incident.location\" name=\"location\" location #location=\"ngModel\"\r\n        id=\"inputlocation\" placeholder=\"Enter location\" required>\r\n      <!--\r\n      location error block\r\n      by Kishan\r\n    -->\r\n      <!-- Input validation for location -->\r\n      <div *ngIf=\"(location.invalid && ( location.touched || location.dirty)) || isSubmitted\" class=\"col-sm-6 text-danger\">\r\n        <div *ngIf=\"location.errors?.required\" class=\"mat-body-1\">\r\n          Please enter the location\r\n        </div>\r\n      </div>\r\n\r\n      <!-- Select date block -->\r\n      <label for=\"date\">\r\n        <b>Date</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incident.date\" name=\"date\" #date=\"ngModel\" id=\"inputdate\"\r\n        value=\"incident.date\" disabled>\r\n      <!--\r\n      date error block\r\n      by Kishan\r\n    -->\r\n      <!-- Validtion for date block -->\r\n      <!-- <div *ngIf=\"(date.invalid && ( date.touched || date.dirty)) || isSubmitted\" class=\"col-sm-6 text-danger\">\r\n      <div *ngIf=\"date.errors?.required\">\r\n        Please enter the date\r\n      </div>\r\n    </div> -->\r\n\r\n      <!-- Select time block -->\r\n      <label for=\"time\">\r\n        <b>Time</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incident.time\" name=\"time\" #time=\"ngModel\" id=\"inputtime\"\r\n        value=\"incident.date\" disabled>\r\n      <!--\r\n      time error block\r\n      by Kishan\r\n    -->\r\n      <!-- Validation for time block -->\r\n      <!-- <div *ngIf=\"(time.invalid && ( time.touched || time.dirty)) || isSubmitted\" class=\"col-sm-6 text-danger\">\r\n      <div *ngIf=\"time.errors?.required\">\r\n        Please enter the time\r\n      </div>\r\n    </div> -->\r\n\r\n      <label for=\"description\">\r\n        <b>Description</b>\r\n      </label>\r\n      <!-- Input field for description name -->\r\n      <textarea type=\"text\" class=\"form-control\" [ngModel]=\"incident.description\" name=\"description\" description\r\n        #description=\"ngModel\" id=\"inputdescription\" placeholder=\"Enter description\" required></textarea>\r\n      <!--\r\n        description error block\r\n        by Kishan\r\n      -->\r\n      <!-- Input validation for description -->\r\n      <div *ngIf=\"(description.invalid && ( description.touched || description.dirty)) || isSubmitted\" class=\"col-sm-7 text-danger\">\r\n        <div *ngIf=\"description.errors?.required\" class=\"mat-body-1\">\r\n          Please enter the description\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Button provided to Create Incident -->\r\n    <div class=\"button-row\">\r\n      <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"dialog()\"> Create </button>\r\n      <button mat-raised-button color=\"warn\" routerLink=\"/dashboard\"> Cancel </button>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1309,6 +1321,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _common_incident__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/incident */ "./src/app/common/incident.ts");
 /* harmony import */ var _common_dataService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/dataService */ "./src/app/common/dataService.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _incidentsuccessful_incidentsuccessful_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../incidentsuccessful/incidentsuccessful.component */ "./src/app/incidentsuccessful/incidentsuccessful.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1322,10 +1336,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var CreateIncidentComponent = /** @class */ (function () {
-    function CreateIncidentComponent(router, dataService) {
+    function CreateIncidentComponent(router, dataService, dialogref) {
         this.router = router;
         this.dataService = dataService;
+        this.dialogref = dialogref;
         this.date = new Date;
         this.incident = new _common_incident__WEBPACK_IMPORTED_MODULE_2__["Incident"]({
             incidentID: '',
@@ -1370,13 +1387,18 @@ var CreateIncidentComponent = /** @class */ (function () {
         day = ('0' + date.getDate()).slice(-2);
         return [date.getFullYear(), mnth, day].join('');
     };
+    CreateIncidentComponent.prototype.dialog = function () {
+        this.dialogref.open(_incidentsuccessful_incidentsuccessful_component__WEBPACK_IMPORTED_MODULE_5__["IncidentsuccessfulComponent"], {
+            width: '600px',
+        });
+    };
     CreateIncidentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-create-incident',
             template: __webpack_require__(/*! ./create-incident.component.html */ "./src/app/create-incident/create-incident.component.html"),
             styles: [__webpack_require__(/*! ./create-incident.component.css */ "./src/app/create-incident/create-incident.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _common_dataService__WEBPACK_IMPORTED_MODULE_3__["DataService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _common_dataService__WEBPACK_IMPORTED_MODULE_3__["DataService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"]])
     ], CreateIncidentComponent);
     return CreateIncidentComponent;
 }());
@@ -1539,6 +1561,69 @@ var CreateTeamsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/createreport/createreport.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/createreport/createreport.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/createreport/createreport.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/createreport/createreport.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  createreport works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/createreport/createreport.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/createreport/createreport.component.ts ***!
+  \********************************************************/
+/*! exports provided: CreatereportComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreatereportComponent", function() { return CreatereportComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CreatereportComponent = /** @class */ (function () {
+    function CreatereportComponent() {
+    }
+    CreatereportComponent.prototype.ngOnInit = function () {
+    };
+    CreatereportComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-createreport',
+            template: __webpack_require__(/*! ./createreport.component.html */ "./src/app/createreport/createreport.component.html"),
+            styles: [__webpack_require__(/*! ./createreport.component.css */ "./src/app/createreport/createreport.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], CreatereportComponent);
+    return CreatereportComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/dashboard/dashboard.component.css":
 /*!***************************************************!*\
   !*** ./src/app/dashboard/dashboard.component.css ***!
@@ -1657,6 +1742,75 @@ var DashboardComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _common_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"]])
     ], DashboardComponent);
     return DashboardComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incidentsuccessful/incidentsuccessful.component.css":
+/*!*********************************************************************!*\
+  !*** ./src/app/incidentsuccessful/incidentsuccessful.component.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/incidentsuccessful/incidentsuccessful.component.html":
+/*!**********************************************************************!*\
+  !*** ./src/app/incidentsuccessful/incidentsuccessful.component.html ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<mat-card>\r\n  \r\n\r\n  <mat-card-content>\r\n      <div class=\"text\" style=\"text-align:center\">\r\n          Incident successfully created!\r\n          <br>\r\n          \r\n        </div>\r\n        \r\n        <button class=\"button\" mat-mini-fab color=\"primary\" (click)=\"onClick()\">Ok</button>\r\n   <!-- <a mat-button routerLink=\"/reviewApplication\" routerLinkActive=\"mat-stroked-button\">Review Application</a>    -->\r\n  </mat-card-content>\r\n</mat-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/incidentsuccessful/incidentsuccessful.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/incidentsuccessful/incidentsuccessful.component.ts ***!
+  \********************************************************************/
+/*! exports provided: IncidentsuccessfulComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IncidentsuccessfulComponent", function() { return IncidentsuccessfulComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var IncidentsuccessfulComponent = /** @class */ (function () {
+    function IncidentsuccessfulComponent(ref) {
+        this.ref = ref;
+    }
+    IncidentsuccessfulComponent.prototype.ngOnInit = function () {
+    };
+    IncidentsuccessfulComponent.prototype.onClick = function () {
+        this.ref.closeAll();
+    };
+    IncidentsuccessfulComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-incidentsuccessful',
+            template: __webpack_require__(/*! ./incidentsuccessful.component.html */ "./src/app/incidentsuccessful/incidentsuccessful.component.html"),
+            styles: [__webpack_require__(/*! ./incidentsuccessful.component.css */ "./src/app/incidentsuccessful/incidentsuccessful.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]])
+    ], IncidentsuccessfulComponent);
+    return IncidentsuccessfulComponent;
 }());
 
 
@@ -2223,7 +2377,7 @@ module.exports = ".container {\r\n  margin-top: 1em;\r\n}\r\n\r\n.pageHeading {\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <!-- Header for the page -->\r\n  <h1>Incident: {{incidentID}}  Reports</h1>\r\n  <hr>\r\n\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n  </mat-form-field>\r\n\r\n  <div class=\"mat-elevation-z8\">\r\n    <table mat-table [dataSource]=\"dataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n      <!-- Incident Name Column\r\n      <ng-container matColumnDef=\"incidentName\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Incident Name </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.incidentName}} </td>\r\n      </ng-container> -->\r\n\r\n      <!-- Reported By Column -->\r\n      <ng-container matColumnDef=\"reportedBy\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Reported By </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.reportedBy}} </td>\r\n      </ng-container>\r\n\r\n      <!-- Structural Damage Column -->\r\n      <ng-container matColumnDef=\"structuralDamage\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Structural Damage </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.structuralDamage}} </td>\r\n      </ng-container>\r\n\r\n      <!-- Fire Column -->\r\n      <ng-container matColumnDef=\"fire\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Fire </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.fire}} </td>\r\n      </ng-container>\r\n\r\n      <!-- Utilities Column -->\r\n      <ng-container matColumnDef=\"utilities\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Utilities </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.utilities}} </td>\r\n      </ng-container>\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click) = \"rowClicked(row)\">\r\n      </tr>\r\n    </table>\r\n\r\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\"></mat-paginator>\r\n  </div>"
+module.exports = "<div class=\"container\">\r\n  <!-- Header for the page -->\r\n  <h1>Incident: {{incidentID}}  Reports</h1>\r\n  <hr>\r\n  <button routerLink = \"/createreport\" mat-raised-button color=\"primary\" >Create Report</button>\r\n  <br>\r\n\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\r\n  </mat-form-field>\r\n  <div class=\"mat-elevation-z8\">\r\n    <table mat-table [dataSource]=\"dataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n      <!-- Incident Name Column\r\n      <ng-container matColumnDef=\"incidentName\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Incident Name </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.incidentName}} </td>\r\n      </ng-container> -->\r\n\r\n      <!-- Reported By Column -->\r\n      <ng-container matColumnDef=\"reportedBy\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Reported By </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.reportedBy}} </td>\r\n      </ng-container>\r\n\r\n      <!-- Structural Damage Column -->\r\n      <ng-container matColumnDef=\"structuralDamage\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Structural Damage </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.structuralDamage}} </td>\r\n      </ng-container>\r\n\r\n      <!-- Fire Column -->\r\n      <ng-container matColumnDef=\"fire\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Fire </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.fire}} </td>\r\n      </ng-container>\r\n\r\n      <!-- Utilities Column -->\r\n      <ng-container matColumnDef=\"utilities\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-header\"> Utilities </th>\r\n        <td mat-cell *matCellDef=\"let row\"> {{row.utilities}} </td>\r\n      </ng-container>\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click) = \"rowClicked(row)\">\r\n      </tr>\r\n    </table>\r\n    <br>\r\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\"></mat-paginator>      \r\n  </div>\r\n  "
 
 /***/ }),
 
@@ -2303,6 +2457,11 @@ var ReportComponent = /** @class */ (function () {
             console.log("result");
             _this.dialogResult = result;
         });
+    };
+    ReportComponent.prototype.report = function () {
+        // this.router.navigate(['/report', {
+        this.router.navigate(['/createreport']);
+        console.log("entered create report ");
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
@@ -3123,7 +3282,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\s530468\Desktop\DRRS\DisasterResponseAndReportingSystem-Backend\views\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\s530671\Desktop\Fall 2018\GDP-II\DisasterResponseAndReportingSystem-Backend\views\src\main.ts */"./src/main.ts");
 
 
 /***/ })
