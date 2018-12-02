@@ -17,6 +17,28 @@ var fcm = new FCM(serverKey)
 var path = require("path")
 var User = require("../model/user")
 
+
+
+
+/* GET home page. */
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+// Signin route for a user
+router.route('/signin').post(users.signin, users.saveTokenNRespond);
+
+// Signup route for a user
+router.route('/signup').post(users.signup);
+
+router.route('/resetPassword/:email').get(users.resetPassword);
+
+router.route('/updatePassword/:tempPassword/:newPassword').get(users.updatePassword);
+
+// Check user logged in or not
+router.route('/isLoggedIn').get(users.isLoggedIn);
+
+
 // testing file save below
 
 router.post('/saveApplicant', (req, res) => {
@@ -60,26 +82,6 @@ var upload = multer({
     }
   }),
 }).array("files");
-
-
-
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-// Signin route for a user
-router.route('/signin').post(users.signin, users.saveTokenNRespond);
-
-// Signup route for a user
-router.route('/signup').post(users.signup);
-
-router.route('/resetPassword/:email').get(users.resetPassword);
-
-router.route('/updatePassword/:tempPassword/:newPassword').get(users.updatePassword);
-
-// Check user logged in or not
-router.route('/isLoggedIn').get(users.isLoggedIn);
 
 // get member List- Hemanth
 // These are the one who are selected for CERT team

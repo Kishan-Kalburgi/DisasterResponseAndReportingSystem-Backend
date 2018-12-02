@@ -181,9 +181,9 @@ var routes = [
     { path: 'cop', component: _cop_cop_component__WEBPACK_IMPORTED_MODULE_12__["COPComponent"] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"] },
-    { path: '**', redirectTo: '' },
+    { path: 'createreport', component: _createreport_createreport_component__WEBPACK_IMPORTED_MODULE_15__["CreatereportComponent"] },
+    { path: '**', redirectTo: '' }
     // CreatereportComponent
-    { path: 'createreport', component: _createreport_createreport_component__WEBPACK_IMPORTED_MODULE_15__["CreatereportComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

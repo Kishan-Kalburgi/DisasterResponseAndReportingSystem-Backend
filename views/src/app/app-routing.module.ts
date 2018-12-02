@@ -36,9 +36,10 @@ const routes: Routes = [
   { path: 'cop', component: COPComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent },
-  { path: '**', redirectTo: ''},
+  { path: 'createreport', component: CreatereportComponent },
+  { path: '**', redirectTo: ''}
   // CreatereportComponent
-  { path: 'createreport', component: CreatereportComponent }
+
 ];
 
 @NgModule({
