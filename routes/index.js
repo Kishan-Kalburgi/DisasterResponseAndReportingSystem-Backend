@@ -136,7 +136,7 @@ let transporter = nodemailer.createTransport({
       pass: "TDqwXa2d4" // generated ethereal password
   }
 });
-var maillist=[req.body.email,'vineeth.agarwal06@gmail.com']
+var maillist=[req.body.email,'teamsynergic18@gmail.com']
 // setup email data with unicode symbols
 maillist.toString
 console.log("mail list "+maillist+" email is "+req.body.email)
