@@ -16,6 +16,7 @@ import { COPComponent } from './cop/cop.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AcceptedApplicantsComponent } from './accepted-applicants/accepted-applicants.component';
 import { RejectedApplicantsComponent } from './rejected-applicants/rejected-applicants.component';
+import { CreatereportComponent } from './createreport/createreport.component';
 
 const routes: Routes = [
   { path: 'createIncident', component: CreateIncidentComponent },
@@ -35,7 +36,10 @@ const routes: Routes = [
   { path: 'cop', component: COPComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'createreport', component: CreatereportComponent },
   { path: '**', redirectTo: ''}
+  // CreatereportComponent
+
 ];
 
 @NgModule({

@@ -17,6 +17,28 @@ var fcm = new FCM(serverKey)
 var path = require("path")
 var User = require("../model/user")
 
+
+
+
+/* GET home page. */
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+// Signin route for a user
+router.route('/signin').post(users.signin, users.saveTokenNRespond);
+
+// Signup route for a user
+router.route('/signup').post(users.signup);
+
+router.route('/resetPassword/:email').get(users.resetPassword);
+
+router.route('/updatePassword/:tempPassword/:newPassword').get(users.updatePassword);
+
+// Check user logged in or not
+router.route('/isLoggedIn').get(users.isLoggedIn);
+
+
 // testing file save below
 
 router.post('/saveApplicant', (req, res) => {
@@ -60,26 +82,6 @@ var upload = multer({
     }
   }),
 }).array("files");
-
-
-
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-// Signin route for a user
-router.route('/signin').post(users.signin, users.saveTokenNRespond);
-
-// Signup route for a user
-router.route('/signup').post(users.signup);
-
-router.route('/resetPassword/:email').get(users.resetPassword);
-
-router.route('/updatePassword/:tempPassword/:newPassword').get(users.updatePassword);
-
-// Check user logged in or not
-router.route('/isLoggedIn').get(users.isLoggedIn);
 
 // get member List- Hemanth
 // These are the one who are selected for CERT team
@@ -134,7 +136,7 @@ let transporter = nodemailer.createTransport({
       pass: "TDqwXa2d4" // generated ethereal password
   }
 });
-var maillist=[req.body.email,'vineeth.agarwal06@gmail.com']
+var maillist=[req.body.email,'teamsynergic18@gmail.com']
 // setup email data with unicode symbols
 maillist.toString
 console.log("mail list "+maillist+" email is "+req.body.email)
@@ -443,6 +445,22 @@ router.get('/getTeamList', function (req, res, next) {
   })
 });
 
+router.get('/getLocation/:locationName', function (req, res, next) {
+  console.log("entered location")
+const googleMapsClient = require('@google/maps').createClient({
+  key: 'AIzaSyB954EX24ldvc9K55mjhdei_wg8Ly5shKQ'
+});  
+console.log("entered location 1")
+googleMapsClient.geocode({
+  address: req.params.locationName
+}, function(err, response) {
+  if (!err) {
+    var location=response.json.results[0].geometry.location;
+
+    res.status(200).json({ msg: "team record fetched successfully", data: response })
+  }
+});
+});
 // get team by id
 router.get('/getTeam/:id', function (req, res, next) {
   team.findById(req.params.id, function (err, results) {

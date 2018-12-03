@@ -84,4 +84,13 @@ export class ReportComponent implements OnInit {
   onLogout() {
     this.authService.logout();
   }
+  report()
+  {
+    
+    // this.router.navigate(['/report', {
+      this.router.navigate(['/createreport']
+    );
+    console.log("entered create report ")
+
+}
 }

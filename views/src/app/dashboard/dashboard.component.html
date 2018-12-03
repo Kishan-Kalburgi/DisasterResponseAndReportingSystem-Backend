@@ -37,32 +37,32 @@
         <!-- The incident modules are shown using cards. Card has image of incident,
         brief description and two buttons edit and archive -->
         <mat-card *ngIf="incidents.length > 0 && !isLoading" class="incident-card mat-elevation-z5">
-          <div [ngSwitch]="item.incidentName">
+          <!-- <div [ngSwitch]="item.incidentName">
             <a *ngSwitchCase="'Earthquake'" routerLink="/dashboard">
-              <!-- Image of incident -->
+              
               <img mat-card-image src="assets/images/incidents/img.1.jpg" alt="Earthquake">
             </a>
             <a *ngSwitchCase="'Floods'" routerLink="/dashboard">
-              <!-- Image of incident -->
+              
               <img mat-card-image src="assets/images/incidents/img.4.jpg" alt="Floods">
             </a>
             <a *ngSwitchCase="'Hurricane'" routerLink="/dashboard">
-              <!-- Image of incident -->
+              
               <img mat-card-image src="assets/images/incidents/img.5.jpg" alt="Hurricane">
             </a>
             <a *ngSwitchCase="'Wildfire'" routerLink="/dashboard">
-              <!-- Image of incident -->
+              
               <img mat-card-image src="assets/images/incidents/img.2.jpg" alt="Wildfire">
             </a>
             <a *ngSwitchCase="'Tornado'" routerLink="/dashboard">
-              <!-- Image of incident -->
+              
               <img mat-card-image src="assets/images/incidents/img.3.jpg" alt="Tornado">
             </a>
             <a *ngSwitchDefault routerLink="/dashboard">
-              <!-- Image of incident -->
+              
               <img mat-card-image src="assets/images/incidents/img.6.jpg" alt="Others">
             </a>
-          </div>
+          </div> -->
           <mat-card-content>
             <!-- Name of incident -->
             <h2>{{ item.incidentName }}</h2>
