@@ -9,6 +9,7 @@ import { TeamdialogComponent } from '../teamdialog/teamdialog.component';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { NgForm } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -56,7 +57,8 @@ export class UpdateTeamComponent implements OnInit {
   constructor(public route: ActivatedRoute,
     private router: Router,
     private dataService: DataService,
-    public dialogref: MatDialog) {
+    public dialogref: MatDialog,
+    private authService: AuthService) {
     this.team = new Team({
       teamID: '',
       members: [],
@@ -145,4 +147,9 @@ export class UpdateTeamComponent implements OnInit {
   // // this.onCreate(createTeam)
 
   // }
+
+  onLogout() {
+    this.authService.logout();
+  }
+  
 }

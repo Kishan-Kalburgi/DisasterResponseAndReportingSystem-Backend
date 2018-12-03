@@ -49,3 +49,19 @@ table {
   padding: 12px;
   text-align: center;
 }
+.title {
+  margin: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a.mat-button{
+  font-size: 17px;
+}

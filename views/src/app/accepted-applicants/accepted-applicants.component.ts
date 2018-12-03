@@ -4,6 +4,7 @@ import { Applicant } from '../common/applicant';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataService } from '../common/dataService';
 import { MatDialog} from '@angular/material';
+import { AuthService } from './../auth/auth.service';
 
 @Component({
   selector: 'app-accepted-applicants',
@@ -21,7 +22,8 @@ export class AcceptedApplicantsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private dataService: DataService, public dialog: MatDialog) { }
+  constructor(private dataService: DataService, public dialog: MatDialog,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.dataService.getMembersList()
@@ -36,6 +38,10 @@ export class AcceptedApplicantsComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
 }

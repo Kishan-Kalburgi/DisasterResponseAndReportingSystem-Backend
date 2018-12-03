@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Report} from '../common/report';
 import { DataService } from '../common/dataService';
+import { AuthService } from './../auth/auth.service';
 
 @Component({
   selector: 'app-cop',
@@ -11,7 +12,7 @@ export class COPComponent implements OnInit {
   lat:Number;
   lng:Number;
   reports: Report[];
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private authService: AuthService) { }
 
   ngOnInit() {  
     this.dataService.getReportsList()
@@ -23,6 +24,9 @@ export class COPComponent implements OnInit {
         this.lng=this.reports[0].location.lng;        
       });
       
+  }
+  onLogout() {
+    this.authService.logout();
   }
 }
 

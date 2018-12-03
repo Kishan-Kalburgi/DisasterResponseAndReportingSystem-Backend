@@ -32,6 +32,22 @@
 mat-grid-tile {
     background: lightblue;
   }
-
+  .title {
+    margin: auto;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .b {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a.mat-button{
+    font-size: 17px;
+  }
+  
   
   

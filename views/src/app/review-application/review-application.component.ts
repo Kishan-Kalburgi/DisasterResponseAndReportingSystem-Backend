@@ -8,6 +8,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { DataService } from '../common/dataService';
 import { MatDialog} from '@angular/material';
 import {  MyDialogComponentComponent} from '../my-dialog-component/my-dialog-component.component';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-review-application',
@@ -25,7 +26,8 @@ export class ReviewApplicationComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private dataService: DataService, public dialog: MatDialog) { }
+  constructor(private dataService: DataService, public dialog: MatDialog,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -65,4 +67,9 @@ export class ReviewApplicationComponent implements OnInit {
         this.dialogResult = result;
     });
   }
+
+  onLogout() {
+    this.authService.logout();
+  }
+  
 }

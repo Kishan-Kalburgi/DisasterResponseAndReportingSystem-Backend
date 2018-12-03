@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { TeamdialogComponent } from '../teamdialog/teamdialog.component';
 import { MatDialog } from '@angular/material';
 import { TeamdeleteComponent } from '../teamdelete/teamdelete.component';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-teams',
@@ -19,7 +20,8 @@ export class TeamsComponent implements OnInit {
   constructor(public route: ActivatedRoute,
     private router: Router, 
     private dataService: DataService,
-    public dialogref: MatDialog) {
+    public dialogref: MatDialog,
+    private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -83,4 +85,9 @@ export class TeamsComponent implements OnInit {
   });
 
   }
+
+  onLogout() {
+    this.authService.logout();
+  }
+  
 }

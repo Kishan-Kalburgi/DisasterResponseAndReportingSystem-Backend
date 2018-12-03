@@ -25,3 +25,20 @@ agm-map{
 #green_row{
     background-color:green; 
 }
+.title {
+    margin: auto;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a.mat-button{
+    font-size: 17px;
+  }
+  
