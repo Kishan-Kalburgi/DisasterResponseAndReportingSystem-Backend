@@ -491,5 +491,14 @@ router.get('/certification/:id', function (req, res, next) {
   res.status(200).download("./public/assets/upload/" + req.params.id);
 });
 
+// icon
+router.get('/icon/:icon', function (req, res, next) {
+  // fetches the respective requested record successfully
+
+  console.log("enered certification" + req.params.id)
+  res.status(200).download("./public/mapIcons/"+req.params.icon);
+  // res.status(200).download("./public/mapIcons/"+req.params.icon);
+});
+
 
 module.exports = router;

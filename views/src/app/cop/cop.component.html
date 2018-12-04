@@ -14,8 +14,7 @@
 
 <!-- <agm-map  [latitude]=40.349841283655195 [longitude]=-94.8827696546299 [zoomControl]="true"> -->
 <agm-map  [latitude]=lat [longitude]=lng [zoomControl]="true">
-
-    <agm-marker *ngFor="let m of reports; let i=index" [latitude]=m.location.lat [longitude]=m.location.lng>
+    <agm-marker *ngFor="let m of reports; let i=index" [latitude]=m.location.lat [longitude]=m.location.lng [iconUrl]=m.icon>
         <agm-info-window>
             <strong>
                 <table style="width:30%">

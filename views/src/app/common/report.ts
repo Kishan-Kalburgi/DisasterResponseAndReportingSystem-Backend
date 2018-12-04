@@ -21,6 +21,7 @@ export class Report {
   utilities: String;
   hazmat: String;
   others: String;
+  icon:String;
 
   constructor(values: Object = {}) {
     /*Constructor initialization*/
