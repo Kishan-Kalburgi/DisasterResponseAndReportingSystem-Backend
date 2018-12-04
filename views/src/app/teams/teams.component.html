@@ -2,6 +2,16 @@
   Assigned to Chandra Mouli
  -->
  <!-- @Author Chandra Mouli Kantipudi -->
+ <mat-toolbar color="primary" class="mat-elevation-z10">
+    <span class="title mat-title">
+      <a class="b" routerLink="/dashboard">DRRS</a>
+    </span>
+    <span class="spacer"></span>
+    <a class="b" mat-button routerLink="/dashboard" routerLinkActive="mat-stroked-button">Dashboard</a>
+    <a class="b" mat-button routerLink="/reviewApplication" routerLinkActive="mat-stroked-button">Review Application</a>
+    <a class="b" mat-button routerLink="/cop" routerLinkActive="mat-stroked-button">Common Operating Picture</a>
+    <a class="b" mat-button (click)="onLogout()">Logout</a>
+  </mat-toolbar>
  <div class="container">
     <!-- Header for the dashboard page -->
  <h1 class="pageHeading mat-display-1">Teams of {{incidentID}}</h1>

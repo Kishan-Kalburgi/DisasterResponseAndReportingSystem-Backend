@@ -5,6 +5,7 @@ import { Team } from '../common/team';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Members } from '../create-teams/create-teams.component';
 import { Applicant } from '../common/applicant';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class Team1DetailsComponent implements OnInit {
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'county'];
   dataSource: Applicant[];
 
-  constructor(public route: ActivatedRoute, private dataService: DataService) { }
+  constructor(public route: ActivatedRoute, private dataService: DataService,
+    private authService: AuthService ) { }
 
 
   ngOnInit() {
@@ -36,4 +38,9 @@ export class Team1DetailsComponent implements OnInit {
         this.dataSource = this.team.members;
       });
   }
+
+  onLogout() {
+    this.authService.logout();
+  }
+
   }

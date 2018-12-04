@@ -4,6 +4,7 @@ import { Incident } from '../common/incident';
 import { MatDialog } from '@angular/material';
 import { ArchivedialogComponent } from '../archivedialog/archivedialog.component';
 import { Router } from '@angular/router';
+import { AuthService } from './../auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +13,15 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  // isLoggedIn$: Observable<boolean>;
   incidents: Incident[];
   isLoading = false;
   id = { _id: String };
-  constructor(private router: Router, private dataService: DataService, public dialogref: MatDialog) { }
+  constructor(private router: Router, private dataService: DataService, public dialogref: MatDialog,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    // this.isLoggedIn$ = this.authService.isLoggedIn;
     this.dataService.getIncidentsList()
       .subscribe((data) => {
         this.incidents = data['data'];
@@ -76,4 +80,9 @@ export class DashboardComponent implements OnInit {
         data:incident_id }]
       );
 }
+
+onLogout() {
+  this.authService.logout();
+}
+
 }

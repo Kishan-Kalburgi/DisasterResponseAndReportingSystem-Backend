@@ -1,3 +1,29 @@
-<p>
-  createreport works!
-</p>
+<div class="container">
+  <!-- Header for the Create Incident page -->
+  <h1 class="pageHeading mat-display-1">Create Report</h1>
+  <hr>
+</div>
+
+<div class="createContainer">
+
+  <!-- Form provided to input details for incident details -->
+  <form novalidate (submit)="onCreate(createInc)" #createInc="ngForm">
+
+    <div class="form-group">
+      <label for="reportedBy">
+        <b>Reported By</b>
+      </label>
+      <!-- Input for incident name -->
+      <input type="text" class="form-control" [ngModel]="report.reportedBy" name="reportedBy" #reportedBy="ngModel"
+        id="inputreportedBy" placeholder="Enter your email address" required>
+      <!--
+      incident name error block
+      by Kishan
+    -->
+      <!-- Input validation for incident name-->
+      <div *ngIf="(reportedBy.invalid && ( reportedBy.touched || reportedBy.dirty)) || isSubmitted" class="col-sm-7 text-danger">
+        <div *ngIf="reportedBy.errors?.required" class="mat-body-1">
+          Please enter your email address
+        </div>
+      </div>
+</div>

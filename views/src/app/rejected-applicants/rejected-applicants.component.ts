@@ -5,6 +5,7 @@ import { Applicant } from '../common/applicant';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DataService } from '../common/dataService';
 import { MatDialog} from '@angular/material';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-rejected-applicants',
@@ -22,7 +23,8 @@ export class RejectedApplicantsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private dataService: DataService, public dialog: MatDialog) { }
+  constructor(private dataService: DataService, public dialog: MatDialog,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.dataService.getRejectedMembersList()
@@ -39,4 +41,8 @@ export class RejectedApplicantsComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
+  onLogout() {
+    this.authService.logout();
+  }
+  
 }

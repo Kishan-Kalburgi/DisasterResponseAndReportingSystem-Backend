@@ -4,6 +4,7 @@ import { DataService } from '../common/dataService';
 import { Report } from '../common/report';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ReportDialogComponent } from '../report-dialog/report-dialog.component';
+import { AuthService } from '../auth/auth.service';
 
 export interface UserData {
   id: string;
@@ -36,7 +37,8 @@ export class ReportComponent implements OnInit {
     public route: ActivatedRoute,
     private router: Router, 
     private dataService: DataService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private authService: AuthService) {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource<Report>(this.reports);
@@ -77,6 +79,10 @@ export class ReportComponent implements OnInit {
       console.log("result");
       this.dialogResult = result;
     });
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
   report()
   {
