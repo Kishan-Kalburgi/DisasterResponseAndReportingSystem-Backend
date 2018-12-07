@@ -20,8 +20,9 @@ export class Report {
   fire: String;
   utilities: String;
   hazmat: String;
+  rescueteam:String;
   others: String;
-  icon:String;
+
 
   constructor(values: Object = {}) {
     /*Constructor initialization*/

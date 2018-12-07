@@ -19,14 +19,24 @@ export class COPComponent implements OnInit {
     this.dataService.getReportsList()
       .subscribe((data) => {
         console.log(data)
-        let counter="";
+        let icon="";
         this.reports = data['data'];
         for(let i=0;i<this.reports.length;i++){
-          counter=(i%2==0)?"fireicon":"medical"
-            this.reports[i].icon="http://localhost:3000/icon/"+counter+".jpg"
+          if(this.reports[i].rescueteam=="Ambulance")
+          icon="medical"
+          else if(this.reports[i].rescueteam=="Fire Truck")
+          icon="fire"
+          else if(this.reports[i].rescueteam=="Police/Law")
+          icon="police"
+          else if(this.reports[i].rescueteam=="All")
+          icon="all"
+          else
+          icon ="none"
+          // icon=(this.reports[i].rescueteam==)?"fire":"medical"
+            this.reports[i].rescueteam="http://localhost:3000/icon/"+icon+".png"
         }
-        this.icon="http://localhost:3000/icon/fireicon1.jpg"
-        this.reports[1].icon=""
+        this.icon="http://localhost:3000/icon/fire.png"
+        // this.reports[1].icon=""
         this.lat=this.reports[0].location.lat;
         this.lng=this.reports[0].location.lng;        
       });

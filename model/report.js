@@ -22,6 +22,7 @@ var reportSchema = new Schema({
     fire: String,
     utilities: String,
     hazmat: String,
+    rescueteam:String,
     others: String
 });
 

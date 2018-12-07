@@ -24,7 +24,7 @@
     <a mat-button (click)="onLogout()">Logout</a>
   </mat-toolbar>
 <agm-map  [latitude]=lat [longitude]=lng [zoomControl]="true">
-    <agm-marker *ngFor="let m of reports; let i=index" [latitude]=m.location.lat [longitude]=m.location.lng [iconUrl]=m.icon>
+    <agm-marker *ngFor="let m of reports; let i=index" [latitude]=m.location.lat [longitude]=m.location.lng [iconUrl]=m.rescueteam>
         <agm-info-window>
             <strong>
                 <table style="width:30%">
