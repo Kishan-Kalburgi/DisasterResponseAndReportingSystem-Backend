@@ -23,7 +23,7 @@ export class AuthService {
 
 
   login(user: User){
-    if (user.userName === 'admin@drrs.com' && (user.password === 'Drrs@1234' || user.password === 'Admin@1234') ) { // {3}
+    if ((user.userName === 'admin@drrs.com'||user.userName === 'Admin@drrs.com')&& (user.password === 'Drrs@1234' || user.password === 'Admin@1234') ) { // {3}
       this.loggedIn.next(true);
       this.dialogref.open(LogindialogComponent, {
         width:'600px',

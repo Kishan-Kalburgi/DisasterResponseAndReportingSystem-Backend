@@ -17,21 +17,21 @@ export class DataService {
 
   getApplicantsList() {
     //   http call
-   return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
+    return this.http.get('https://drrs.herokuapp.com/getApplicantsList');
     // return this.http.get('http://localhost:3000/getApplicantsList');
 
   }
 
   getMembersList() {
     //   http call
-   return this.http.get('https://drrs.herokuapp.com/getMembersList');
+    return this.http.get('https://drrs.herokuapp.com/getMembersList');
     // return this.http.get('http://localhost:3000/getMembersList');
 
   }
 
   getRejectedMembersList() {
     //   http call
-   return this.http.get('https://drrs.herokuapp.com/getRejectedMembersList');
+    return this.http.get('https://drrs.herokuapp.com/getRejectedMembersList');
     // return this.http.get('http://localhost:3000/getRejectedMembersList');
 
   }
@@ -113,14 +113,27 @@ export class DataService {
 
 
   getReportById(data: string) {
-        // return this.http.get('http://localhost:3000/getReportById/'+ data);
+    // return this.http.get('http://localhost:3000/getReportById/'+ data);
     return this.http.get('https://drrs.herokuapp.com/getReportById/' + data);
   }
 
   getTeamsById(data: string) {
     //  return this.http.get('http://localhost:3000/getTeamsById/'+ data);
     return this.http.get('https://drrs.herokuapp.com/getTeamsById/' + data);
-}
+  }
+
+
+  getLocation(data: string) {
+    //  return this.http.get('http://localhost:3000/getLocation/'+ data);
+    return this.http.get('https://drrs.herokuapp.com/getLocation/' + data);
+  }
+
+  saveReport(data) {
+    // http call
+    return this.http.post('https://drrs.herokuapp.com/saveReport', data);
+    // return this.http.post('http://localhost:3000/saveReport', data);
+
+  }
 
 }
 

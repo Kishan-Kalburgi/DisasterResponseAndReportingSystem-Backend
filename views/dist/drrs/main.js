@@ -975,7 +975,7 @@ var AuthService = /** @class */ (function () {
         configurable: true
     });
     AuthService.prototype.login = function (user) {
-        if (user.userName === 'admin@drrs.com' && (user.password === 'Drrs@1234' || user.password === 'Admin@1234')) {
+        if ((user.userName === 'admin@drrs.com' || user.userName === 'Admin@drrs.com') && (user.password === 'Drrs@1234' || user.password === 'Admin@1234')) {
             this.loggedIn.next(true);
             this.dialogref.open(_logindialog_logindialog_component__WEBPACK_IMPORTED_MODULE_3__["LogindialogComponent"], {
                 width: '600px',
@@ -1116,6 +1116,15 @@ var DataService = /** @class */ (function () {
     DataService.prototype.getTeamsById = function (data) {
         //  return this.http.get('http://localhost:3000/getTeamsById/'+ data);
         return this.http.get('https://drrs.herokuapp.com/getTeamsById/' + data);
+    };
+    DataService.prototype.getLocation = function (data) {
+        //  return this.http.get('http://localhost:3000/getLocation/'+ data);
+        return this.http.get('https://drrs.herokuapp.com/getLocation/' + data);
+    };
+    DataService.prototype.saveReport = function (data) {
+        // http call
+        return this.http.post('https://drrs.herokuapp.com/saveReport', data);
+        // return this.http.post('http://localhost:3000/saveReport', data);
     };
     DataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1604,7 +1613,7 @@ var CreateTeamsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container {\r\n    margin-top: 1em;\r\n  }\r\n  \r\n  .pageHeading {\r\n    margin: auto;\r\n  }\r\n  \r\n  .createContainer {\r\n      padding-left: 30em;\r\n      padding-right: 29em;\r\n  }\r\n  \r\n  /* .primary{\r\n      background: #673ab7;\r\n      color: white;\r\n      font-size: 1em;\r\n  } */\r\n  \r\n  .button-row button {\r\n    margin-right: 8px;\r\n  }\r\n  \r\n  "
+module.exports = ".container {\r\n  margin-top: 1em;\r\n}\r\n\r\n.pageHeading {\r\n  margin: auto;\r\n}\r\n\r\n.createContainer {\r\n    padding-left: 30em;\r\n    padding-right: 29em;\r\n}\r\n\r\n.primary{\r\n    background: #673ab7;\r\n    color: violet;\r\n    font-size: 1em;\r\n}\r\n\r\n.button-row button {\r\n  margin-right: 8px;\r\n}\r\n\r\n.title {\r\n  margin: auto;\r\n}\r\n\r\n.spacer {\r\n  flex: 1 1 auto;\r\n}\r\n\r\na {\r\n  text-decoration: none;\r\n  color: white;\r\n}\r\n\r\na.mat-button{\r\n  font-size: 17px;\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -1615,7 +1624,7 @@ module.exports = ".container {\r\n    margin-top: 1em;\r\n  }\r\n  \r\n  .pageHe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <!-- Header for the Create Incident page -->\r\n  <h1 class=\"pageHeading mat-display-1\">Create Report</h1>\r\n  <hr>\r\n</div>\r\n\r\n<div class=\"createContainer\">\r\n\r\n  <!-- Form provided to input details for incident details -->\r\n  <form novalidate (submit)=\"onCreate(createInc)\" #createInc=\"ngForm\">\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"reportedBy\">\r\n        <b>Reported By</b>\r\n      </label>\r\n      <!-- Input for incident name -->\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"report.reportedBy\" name=\"reportedBy\" #reportedBy=\"ngModel\"\r\n        id=\"inputreportedBy\" placeholder=\"Enter your email address\" required>\r\n      <!--\r\n      incident name error block\r\n      by Kishan\r\n    -->\r\n      <!-- Input validation for incident name-->\r\n      <div *ngIf=\"(reportedBy.invalid && ( reportedBy.touched || reportedBy.dirty)) || isSubmitted\" class=\"col-sm-7 text-danger\">\r\n        <div *ngIf=\"reportedBy.errors?.required\" class=\"mat-body-1\">\r\n          Please enter your email address\r\n        </div>\r\n      </div>\r\n</div>"
+module.exports = "<mat-toolbar color=\"primary\" class=\"mat-elevation-z10\">\r\n  <span class=\"title mat-title\">\r\n    <a routerLink=\"/dashboard\">DRRS</a>\r\n  </span>\r\n  <span class=\"spacer\"></span>\r\n  <a mat-button routerLink=\"/dashboard\" routerLinkActive=\"mat-stroked-button\">Dashboard</a>\r\n  <a mat-button routerLink=\"/reviewApplication\" routerLinkActive=\"mat-stroked-button\">Review Application</a>\r\n  <a mat-button routerLink=\"/cop\" routerLinkActive=\"mat-stroked-button\">Common Operating Picture</a>\r\n  <a mat-button (click)=\"onLogout()\">Logout</a>\r\n</mat-toolbar>\r\n\r\n<div class=\"container\">\r\n  <!-- Header for the Create Incident page -->\r\n  <h1 class=\"pageHeading mat-display-1\">Create Report</h1>\r\n  <hr>\r\n</div>\r\n\r\n<div class=\"createContainer\">\r\n\r\n  <!-- Form provided to input details for incident details -->\r\n  <form novalidate (ngSubmit)=\"onSubmit(createInc)\" #createInc=\"ngForm\">\r\n\r\n    <div class=\"form-group\">\r\n\r\n      <label for=\"reportedBy\">\r\n        <b>Reported By</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"reportedBy\" name=\"reportedBy\" id=\"inputreportedBy\" placeholder=\"Enter your email address\"\r\n        required>\r\n\r\n\r\n      <label for=\"incidentName\">\r\n        <b>Incident Name</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"incidentName\" name=\"incidentName\" id=\"incidentName\" placeholder=\"Please enter the incident name \"\r\n        required>\r\n\r\n      <label for=\"address\">\r\n        <b>Location</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\"  [(ngModel)]=\"address\" name=\"address\" id=\"address\" placeholder=\"Enter address\" required>\r\n      <!-- <div class=\"button-row\"> -->\r\n        <br>\r\n       <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"fetch()\"> Fetch Location Coordinates </button>\r\n      <!-- </div> -->\r\n      <br>\r\n      <label for=\"lat\"> Lat is {{lat}}</label>&nbsp;&nbsp;\r\n      <label for=\"lng\"> Lng is {{lng}}</label>\r\n      <br>\r\n      <label for=\"casualties\">\r\n        <b>Casualties</b>\r\n      </label>\r\n      <ul>\r\n        <li>Red\r\n          <input type=\"number\" min=0 class=\"form-control\" [ngModel]=\"red\" name=\"red\" id=\"red\" required>\r\n        </li>\r\n        <li>Yellow\r\n          <input type=\"number\" min=0 class=\"form-control\" [ngModel]=\"yellow\" name=\"yellow\" id=\"yellow\" required>\r\n        </li>\r\n        <li>Green\r\n          <input type=\"number\" min=0 class=\"form-control\" [ngModel]=\"green\" name=\"green\" id=\"green\" required>\r\n        </li>\r\n        <li>Black\r\n          <input type=\"number\" min=0 class=\"form-control\" [ngModel]=\"black\" name=\"black\" id=\"black\" required>\r\n        </li>\r\n      </ul>\r\n\r\n      <!-- <ion-item>\r\n          <ion-label color=\"primary\">Structure Damage*</ion-label> -->\r\n\r\n      <b>Structural Damage</b>\r\n      <br>\r\n      <select name=\"structuralDamage\" ngModel #structuralDamage=\"ngModel\" required>\r\n        <option>Low</option>\r\n        <option>Medium</option>\r\n        <option>High</option>\r\n        <option>None</option>\r\n      </select>\r\n      <br>\r\n\r\n      <b>Fire</b>\r\n      <br>\r\n      <select name=\"fire\" ngModel #fire=\"ngModel\" required>\r\n        <option>Low</option>\r\n        <option>Medium</option>\r\n        <option>High</option>\r\n        <option>None</option>\r\n      </select>\r\n      <br>\r\n\r\n      <b>Utilities</b>\r\n      <br>\r\n      <select name=\"utilities\" ngModel #utilities=\"ngModel\" required>\r\n        <option>Electricity</option>\r\n        <option>Gas</option>\r\n        <option>Chemical</option>\r\n        <option>None</option>\r\n      </select>\r\n      <br>\r\n\r\n      <label for=\"hazmat\">\r\n        <b>Hazmat</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"hazmat\" name=\"hazmat\" id=\"hazmat\" placeholder=\"Please describe any hazardious material found  \"\r\n        required>\r\n      <br>\r\n\r\n      <b>Immediate Rescue Team Needed</b>\r\n      <br>\r\n      <select name=\"rescueTeam\" ngModel #rescueTeam=\"ngModel\" required>\r\n        <option>Ambulance</option>\r\n        <option>Fire Truck</option>\r\n        <option>Police/Law</option>\r\n        <option>All</option>\r\n        <option>None</option>\r\n      </select>\r\n      <br>\r\n\r\n\r\n      <label for=\"others\">\r\n        <b>Additional Information</b>\r\n      </label>\r\n      <input type=\"text\" class=\"form-control\" [ngModel]=\"others\" name=\"others\" id=\"others\" placeholder=\"Please enter the incident name \"\r\n        required>\r\n    </div>\r\n\r\n    <div class=\"button-row\">\r\n      <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!createInc.form.valid\">Submit</button>\r\n      <!-- <button type=\"submit\" class=\"btn btn-success\" >Submit</button> -->\r\n      <!-- <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"submit()\"> Create </button> -->\r\n      <button mat-raised-button color=\"warn\" routerLink=\"/dashboard\"> Cancel </button>\r\n    </div>\r\n\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1630,6 +1639,8 @@ module.exports = "<div class=\"container\">\r\n  <!-- Header for the Create Inci
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreatereportComponent", function() { return CreatereportComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_dataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/dataService */ "./src/app/common/dataService.ts");
+/* harmony import */ var _common_report__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/report */ "./src/app/common/report.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1640,10 +1651,76 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var CreatereportComponent = /** @class */ (function () {
-    function CreatereportComponent() {
+    function CreatereportComponent(dataService) {
+        this.dataService = dataService;
+        this.lat = 0;
+        this.lng = 0;
+        this.counter = 0;
+        this.reports = new _common_report__WEBPACK_IMPORTED_MODULE_2__["Report"]();
     }
     CreatereportComponent.prototype.ngOnInit = function () {
+    };
+    CreatereportComponent.prototype.fetch = function () {
+        var _this = this;
+        console.log("add is " + this.address);
+        this.dataService.getLocation(this.address)
+            .subscribe(function (data) {
+            console.log(data);
+            _this.location = data['data'];
+            _this.lat = _this.location.lat;
+            _this.lng = _this.location.lng;
+            // this.address=this.location
+            console.log("location" + _this.location.lat);
+        });
+    };
+    CreatereportComponent.prototype.onSubmit = function (report) {
+        var _this = this;
+        // while(this.counter==0){
+        console.log(" initial report is ", report.value);
+        var input = new FormData();
+        // this.reports.reportedBy=report.value.reportedBy
+        // this.reports.incidentName=report.value.incidentName
+        this.reports.files = "";
+        this.reports.casualties = { red: report.value.red, black: report.value.black,
+            yellow: report.value.yellow, green: report.value.green };
+        this.reports.structuralDamage = report.value.structuralDamage;
+        this.reports.fire = report.value.fire;
+        this.reports.utilities = report.value.utilities;
+        this.reports.hazmat = report.value.hazmat;
+        this.reports.rescueteam = report.value.rescueTeam;
+        this.reports.others = report.value.others;
+        if (this.lat == 0 && this.lng == 0) {
+            this.dataService.getLocation(this.address)
+                .subscribe(function (data) {
+                console.log(data);
+                report.value.address = data['data'];
+                console.log(" new report is " + report.value);
+                // this.reports=report.value
+                _this.reports.location = _this.location;
+                input.append('formData', JSON.stringify(_this.reports));
+                _this.dataService.saveReport(input)
+                    .subscribe(function (data) {
+                    console.log(data);
+                });
+                console.log("final report is ", _this.reports);
+            });
+        }
+        else {
+            // this.counter=1
+            this.reports.location = this.location;
+            input.append('formData', JSON.stringify(this.reports));
+            this.dataService.saveReport(input)
+                .subscribe(function (data) {
+                console.log(data);
+            });
+        }
+        // }
+        // report.address=this.location
+        // console.log("new ADDRESS is "+report.value.address.lat)
+        // console.log("new report is "+report.value)
     };
     CreatereportComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1651,7 +1728,7 @@ var CreatereportComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./createreport.component.html */ "./src/app/createreport/createreport.component.html"),
             styles: [__webpack_require__(/*! ./createreport.component.css */ "./src/app/createreport/createreport.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_common_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
     ], CreatereportComponent);
     return CreatereportComponent;
 }());

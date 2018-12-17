@@ -358,7 +358,7 @@ router.get('/getReportById/:id', function (req, res, next) {
     // if no error 
     else {
       // fetches the respective requested record successfully
-      res.status(200).json({ msg: "team record fetched successfully", data: results })
+      res.status(200).json({ msg: "report record fetched successfully", data: results })
     }
   })
 });
@@ -456,8 +456,9 @@ googleMapsClient.geocode({
 }, function(err, response) {
   if (!err) {
     var location=response.json.results[0].geometry.location;
+    console.log(location)
+    res.status(200).json({ msg: "Location Coordinates fetched successfully", data: location })
 
-    res.status(200).json({ msg: "team record fetched successfully", data: response })
   }
 });
 });
