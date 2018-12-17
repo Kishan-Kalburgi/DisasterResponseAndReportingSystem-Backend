@@ -47,7 +47,7 @@ Angular version when we started 6.0.8
 ## Development email and password for Web application
 Note: This can be changed after in production
 ### Email: admin@drrs.com
-### Password: admin12345
+### Password: Drrs@1234
 
 # Team Contact Info
 
