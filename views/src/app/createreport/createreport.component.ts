@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../common/dataService';
 import { Report } from '../common/report';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-createreport',
@@ -8,16 +9,22 @@ import { Report } from '../common/report';
   styleUrls: ['./createreport.component.css']
 })
 export class CreatereportComponent implements OnInit {
+  incidentID:string;
   location:{lat,lng}
   casualties:{red,yellow,green,black}
   lat=0
   lng=0
   counter=0
   reports: Report=new Report();
-  constructor(private dataService: DataService) { }
+  constructor(    public route: ActivatedRoute,private router: Router,private dataService: DataService) { }
   address:any
 
   ngOnInit() {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      this.incidentID = paramMap.get('item.incidentID');
+      console.log("value of incidentID is "+this.incidentID);
+    })
+
   }
   
   fetch(){
@@ -49,6 +56,8 @@ export class CreatereportComponent implements OnInit {
       this.reports.hazmat=report.value.hazmat
       this.reports.rescueteam=report.value.rescueTeam
       this.reports.others=report.value.others
+      this.reports.incidentName=report.value.incidentName
+
 
     if(this.lat==0 && this.lng==0 ){
       this.dataService.getLocation(this.address)
@@ -64,6 +73,11 @@ export class CreatereportComponent implements OnInit {
           console.log(data)
         });     
         console.log("final report is ",this.reports)
+
+        this.router.navigate(['/reportById', {      
+          data:this.incidentID }]
+        );
+    
       });
 
     }

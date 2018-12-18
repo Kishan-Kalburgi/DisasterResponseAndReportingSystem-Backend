@@ -86,7 +86,10 @@ export class ReportComponent implements OnInit {
   }
   report()
   {
-    
+    this.router.navigate(['/createreport', {      
+      data:this.incidentID }]
+    );
+
     // this.router.navigate(['/report', {
       this.router.navigate(['/createreport']
     );

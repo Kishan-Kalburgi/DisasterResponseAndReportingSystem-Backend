@@ -1641,6 +1641,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _common_dataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/dataService */ "./src/app/common/dataService.ts");
 /* harmony import */ var _common_report__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/report */ "./src/app/common/report.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1653,8 +1654,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var CreatereportComponent = /** @class */ (function () {
-    function CreatereportComponent(dataService) {
+    function CreatereportComponent(route, router, dataService) {
+        this.route = route;
+        this.router = router;
         this.dataService = dataService;
         this.lat = 0;
         this.lng = 0;
@@ -1662,6 +1666,11 @@ var CreatereportComponent = /** @class */ (function () {
         this.reports = new _common_report__WEBPACK_IMPORTED_MODULE_2__["Report"]();
     }
     CreatereportComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.paramMap.subscribe(function (paramMap) {
+            _this.incidentID = paramMap.get('item.incidentID');
+            console.log("value of incidentID is " + _this.incidentID);
+        });
     };
     CreatereportComponent.prototype.fetch = function () {
         var _this = this;
@@ -1692,6 +1701,7 @@ var CreatereportComponent = /** @class */ (function () {
         this.reports.hazmat = report.value.hazmat;
         this.reports.rescueteam = report.value.rescueTeam;
         this.reports.others = report.value.others;
+        this.reports.incidentName = report.value.incidentName;
         if (this.lat == 0 && this.lng == 0) {
             this.dataService.getLocation(this.address)
                 .subscribe(function (data) {
@@ -1706,6 +1716,9 @@ var CreatereportComponent = /** @class */ (function () {
                     console.log(data);
                 });
                 console.log("final report is ", _this.reports);
+                _this.router.navigate(['/reportById', {
+                        data: _this.incidentID
+                    }]);
             });
         }
         else {
@@ -1728,7 +1741,7 @@ var CreatereportComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./createreport.component.html */ "./src/app/createreport/createreport.component.html"),
             styles: [__webpack_require__(/*! ./createreport.component.css */ "./src/app/createreport/createreport.component.css")]
         }),
-        __metadata("design:paramtypes", [_common_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _common_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
     ], CreatereportComponent);
     return CreatereportComponent;
 }());
@@ -2593,6 +2606,9 @@ var ReportComponent = /** @class */ (function () {
         this.authService.logout();
     };
     ReportComponent.prototype.report = function () {
+        this.router.navigate(['/createreport', {
+                data: this.incidentID
+            }]);
         // this.router.navigate(['/report', {
         this.router.navigate(['/createreport']);
         console.log("entered create report ");
