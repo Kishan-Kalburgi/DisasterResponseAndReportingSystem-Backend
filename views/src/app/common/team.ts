@@ -1,16 +1,15 @@
 // Assigned to Kishan
-
+import { Applicant } from "./applicant"
 export class Team {
 
     teamID: string;
-    // teamName: string;
-    members: {
-        firstName: string;
-        lastName: string;
-        email: string;
-        county: string;
-        role: string;// drop down { leader, asst. leader, member }
-    }
+    teamName: string;
+    incidentID: string;
+    isActive: boolean;
+    leader: string;
+    asstLeader: string;
+    members:  Applicant[]
+    
 
     constructor(values: Object = {}) {
         /*Constructor initialization*/

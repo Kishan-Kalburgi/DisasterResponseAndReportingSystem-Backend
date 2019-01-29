@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,90 +14,38 @@ import { ReviewApplicationComponent } from './review-application/review-applicat
 import { TeamsComponent } from './teams/teams.component';
 import { CreateTeamsComponent } from './create-teams/create-teams.component';
 
-import { Team1DetailsComponent } from './team1-details/team1-details.component';
-import {CdkTableModule} from '@angular/cdk/table'
 
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatStepperModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-} from '@angular/material';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { Team1DetailsComponent } from './team1-details/team1-details.component';
+
+import { ReportComponent } from './report/report.component';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ArchivedIncidentsComponent } from './archived-incidents/archived-incidents.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { COPComponent } from './cop/cop.component';
+import { AgmCoreModule } from '@agm/core';
+import { MyDialogComponentComponent } from './my-dialog-component/my-dialog-component.component';
+import { ApplicantacceptedComponent } from './applicantaccepted/applicantaccepted.component';
+import { ApplicantdeniedComponent } from './applicantdenied/applicantdenied.component';
+import { Material } from './app.material';
+import { ReportDialogComponent } from './report-dialog/report-dialog.component';
+import { ArchivedialogComponent } from './archivedialog/archivedialog.component';
+import { TeamdialogComponent } from './teamdialog/teamdialog.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
+import { UpdateTeamComponent } from './update-team/update-team.component';
+import { TeamdeleteComponent } from './teamdelete/teamdelete.component';
+import { LogindialogComponent } from './logindialog/logindialog.component';
+import { AcceptedApplicantsComponent } from './accepted-applicants/accepted-applicants.component';
+import { RejectedApplicantsComponent } from './rejected-applicants/rejected-applicants.component';
+import { IncidentsuccessfulComponent } from './incidentsuccessful/incidentsuccessful.component';
+import { CreatereportComponent } from './createreport/createreport.component';
 
-@NgModule({
-  exports: [
-    CdkTableModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-  ],
-  declarations: []
-})
-export class DemoMaterialModule {}
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent,
     LoginComponent,
     DashboardComponent,
     CreateIncidentComponent,
@@ -103,20 +53,53 @@ export class DemoMaterialModule {}
     TeamsComponent,
     CreateTeamsComponent,
     Team1DetailsComponent,
-    ArchivedIncidentsComponent
+    ArchivedIncidentsComponent,
+    COPComponent,
+    MyDialogComponentComponent,
+    ApplicantacceptedComponent,
+    ApplicantdeniedComponent,
+    ReportComponent,
+    ReportDialogComponent,
+    ArchivedialogComponent,
+    TeamdialogComponent,
+    UpdateTeamComponent,
+    TeamdeleteComponent,
+    LogindialogComponent,
+    AcceptedApplicantsComponent,
+    RejectedApplicantsComponent,
+    IncidentsuccessfulComponent,
+    CreatereportComponent
   ],
+  
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MatCardModule,
-    MatButtonModule,
-    DemoMaterialModule,
-    MatNativeDateModule,
+    Material,
     BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB954EX24ldvc9K55mjhdei_wg8Ly5shKQ'
+    }),
   ],
-  providers: [],
+
+  entryComponents: [
+    MyDialogComponentComponent,
+    ApplicantacceptedComponent,
+    ApplicantdeniedComponent,
+    ReportDialogComponent,
+    ArchivedialogComponent,
+    TeamdialogComponent,
+    TeamdeleteComponent,
+    LogindialogComponent,
+    IncidentsuccessfulComponent,
+    CreatereportComponent
+  ],
+  
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
+
+  // schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

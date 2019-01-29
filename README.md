@@ -41,6 +41,14 @@ Link: https://github.com/HemanthNarne/DisasterResponseAndReportingSystem-MobileA
 # Web Application Repo
 Link: https://github.com/HemanthNarne/DisasterResponseAndReportingSystem-Website
 
+#
+Angular version when we started 6.0.8
+
+## Development email and password for Web application
+Note: This can be changed after in production
+### Email: admin@drrs.com
+### Password: Drrs@1234
+
 # Team Contact Info
 
 Chandra Mouli Kantipudi	

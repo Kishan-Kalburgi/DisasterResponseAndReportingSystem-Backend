@@ -1,55 +1,33 @@
-<!-- 
+<!--
   Assigned to Hemanth
  -->
- <div class="loginContainer">
-   <!-- Header for login page -->
-  <h1>Login </h1>
-  <!-- Form provided to input login details -->
-  <form novalidate (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+ <div class="center">
+   <h1>Disaster Response & Reporting System</h1>
+ </div>
+ <div class="logo">
+    <img src="assets/images/EOC_logo.gif" alt="EOC_logo">
+ </div>
 
-    <div class="form-group">
-      <label for="email">
-        <b>Email</b>
-      </label>
-      <!-- Input for emailID -->
-      <input type="text" class="form-control" [ngModel]="applicant.email" name="email" email #email="ngModel" id="inputEmail" placeholder="Email"
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
-      <!-- 
-        Email error block 
-        by kishan
-      -->
-      <!-- Validation for emailID -->
-      <div *ngIf="(email.invalid && ( email.touched || email.dirty)) || isSubmitted" class="text-danger">
-        <div *ngIf="email.errors?.required">
-          Please enter the email id
-        </div>
-        <div *ngIf="email.errors?.pattern &&  email.dirty">
-            Please enter the valid email id
-        </div>
-      </div>
-
-      <!-- 
-        Password block 
-        by kishan
-      -->
-      <label for="password">
-        <b>Password</b>
-      </label>
-      <!-- Input for password -->
-      <input type="password" class="form-control" [ngModel]="applicant.password" name="password" #password="ngModel" id="inputpassword"
-        placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
-      <!-- password error block -->
-      <!-- Validation for password -->
-      <div *ngIf="(password.invalid && ( password.touched || password.dirty)) || isSubmitted" class="text-danger">
-        <div *ngIf="password.errors?.required">
-          Please enter the password
-        </div>
-        <!-- <div *ngIf="password.errors?.pattern && password.dirty">
-          Password must have UpperCase, LowerCase, Number/SpecialChar and mininmum 8 characters.
-        </div> -->
-      </div>
-      </div>
-      <!-- Button provided to submit login details -->
-     <button class="btn primary"> Login </button>
-  </form>
+ <div>
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <p>Please login to continue</p>
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="User" formControlName="userName" required>
+            <mat-error *ngIf="isFieldInvalid('userName')">
+              Please inform your user name
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input">
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error *ngIf="isFieldInvalid('userName')">
+              Please inform your password
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
+  

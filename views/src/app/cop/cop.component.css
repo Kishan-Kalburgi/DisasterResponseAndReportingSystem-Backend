@@ -1,0 +1,44 @@
+agm-map{
+    height: 460px;
+    /* width:  1000px; */
+    align-self: flex-end;
+}
+
+ th, td {
+    border: 1px solid black;
+}
+
+#black_row{
+    background-color:black; 
+    color: white
+}
+
+#red_row{
+    background-color:#ff0000; 
+    color: white
+}
+
+#yellow_row{
+    background-color:yellow; 
+}
+
+#green_row{
+    background-color:green; 
+}
+.title {
+    margin: auto;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a.mat-button{
+    font-size: 17px;
+  }
+  

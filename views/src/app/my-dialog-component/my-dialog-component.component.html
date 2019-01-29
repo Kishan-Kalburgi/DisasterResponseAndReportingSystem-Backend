@@ -1,0 +1,41 @@
+<div>
+    <h1 class="pageHeading mat-display-1">Applicant Details:</h1>
+    <!-- mat-dialog-title -->
+    <hr>
+    <mat-dialog-content>
+      <!-- <div class="container"> -->
+  <div class="row text-style">
+    <div class="col">
+      <h3><u>Personal Details:</u></h3>
+      <p><b>First Name: </b>{{ user.firstName }}</p>
+      <p><b>Second Name: </b>{{ user.lastName }}</p>
+      <p><b>Email Id: </b>{{ user.email }}</p>
+      <p><b>Date of Birth: </b>{{ user.dob | date: 'dd/MM/yyyy' }}</p>
+      <p><b>Mobile Number: </b> {{ user.mobileNumber }}</p>
+      <h3><u>Address: </u></h3>
+      {{ user.address1 }},<br>
+      {{ user.address2 }}, {{ user.county }},<br>
+      {{ user.city }}, {{ user.state }}, {{ user.country }}
+    </div>
+    <div class="col">
+      <h3><u>Additional Details:</u></h3>
+      <p><b>Skills: </b> {{ user.skills }} </p>
+      <p><b>Lisence Number: </b> {{ user.licenseNumber }} </p>
+      <p><b>Limitations: </b>{{ user.limitations }}</p>
+      <!-- <p *ngIf='user.files'><b>Certification: </b><a id="file" href="http://localhost:3000/certification">{{ user.files }}</a></p> -->
+      <p *ngIf='user.files'><b>Certification: </b>
+        <a id="file" href="{{temp}}" >{{ filename }}</a>
+      </p>
+      <p *ngIf='!user.files'><b>Certification: </b>No files uploaded</p>
+    </div>
+  </div>
+  <!-- </div> -->
+    <!-- <strong>{{data}}</strong> -->
+  </mat-dialog-content>
+  <hr>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="accept()">Accept</button>
+    <button mat-raised-button color="warn" (click)="deny()">Deny</button>
+  </mat-dialog-actions>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

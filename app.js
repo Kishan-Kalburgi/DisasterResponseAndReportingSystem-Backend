@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const bodyParser = require('body-parser');
 var session = require('express-session');
 var path = require('path');
 var cors = require('cors');
@@ -11,8 +12,12 @@ var usersRouter = require('./routes/users');
 require("./config/database");
 var app = express();
 
+// parse body params and attache them to req.body
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views/dist/drs'));
+app.set('views', path.join(__dirname, 'views/dist/drrs'));
 app.engine("html", require("ejs").renderFile);
 app.set('view engine', 'html');
 
@@ -26,7 +31,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'views/dist/drs')));
+app.use(express.static(path.join(__dirname, 'views/dist/drrs')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

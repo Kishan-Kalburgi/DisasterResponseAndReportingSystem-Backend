@@ -1,5 +1,53 @@
-.example-card {
-    max-width: 235px;
+.container {
+  margin-top: 1em;
+}
+
+.pageHeading {
+  margin: auto;
+}
+
+/* cards */
+.incident-card {
+    /* max-width: 235px; */
+    width: 255px;
+    min-height: 230px;
+    max-height: 230x;
+    margin-top: 2em;
+}
+
+/* for buttons - Create incident and Archived Incidents */
+.buttons {
+    font-size: 1em;
+}
+
+/* Describtion height */
+.p-height{
+    height: 6em;
+}
+
+.mt-archive{
+    margin-top: 0.4em;
+}
+
+mat-grid-tile {
+    background: lightblue;
   }
+  .title {
+    margin: auto;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .b {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a.mat-button{
+    font-size: 17px;
+  }
+  
   
   

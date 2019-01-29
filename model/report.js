@@ -6,19 +6,23 @@ var Schema = mongoose.Schema;
 var reportSchema = new Schema({
     reportID: String,
     reportedBy: String,
-    incidentName: String, // this should be automatically fetched from incidents model
-    location: String,
+    incidentName: String,
+    location: {
+        lat:Number,
+        lng:Number
+    },
     files: String,
-    casualities: {
-        red: String,
-        yellow: String,
-        green: String,
-        black: String
+    casualties: {
+        red: Number,
+        yellow: Number,
+        green: Number,
+        black: Number
     },
     structuralDamage: String,
     fire: String,
     utilities: String,
     hazmat: String,
+    rescueteam:String,
     others: String
 });
 

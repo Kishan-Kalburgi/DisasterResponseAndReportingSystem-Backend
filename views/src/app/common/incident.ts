@@ -8,6 +8,7 @@ incidentID: string;
   date: Date;
   time: string;
   description: string;
+  isActive:boolean;
 
   constructor(values: Object = {}) {
     /*Constructor initialization*/

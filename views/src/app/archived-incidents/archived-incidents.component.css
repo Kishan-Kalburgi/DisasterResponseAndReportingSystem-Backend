@@ -2,15 +2,19 @@
 
 .example-container {
     display: flex;
-    /* flex-direction: column;
-    min-width: 300px; */
+    flex-direction: column;
+    min-width: 1110px;
+  }
+
+  .pageHeading {
+    margin: 13px auto;
   }
 
 .example-header {
   min-height: 64px;
   padding: 8px 24px 0;
 }
-  
+
 .mat-form-field {
   font-size: 14px;
   width: 100%;
@@ -19,14 +23,41 @@
 .mat-table {
   overflow: auto;
   max-height: 500px;
+  min-width: 400px;
 }
 
 .table-header{
-  font-size: 18px;
+  font-size: 25px;
   color: black;
+  font-weight: bold;
+}
+
+.table-cell {
+  font-size: 15px;
 }
 
 /* for buttons - download */
 .buttons {
     font-size: 1em;
 }
+
+a {
+  text-decoration: none;
+}
+.title {
+  margin: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a.mat-button{
+  font-size: 17px;
+}
+

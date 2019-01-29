@@ -1,11 +1,23 @@
-.loginContainer {
-    padding-left: 30em;
-    padding-right: 29em;
-    padding-top: 6em;
+mat-card {
+  max-width: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.primary{
-    background: #673ab7;
-    color: white;
-    font-size: 1em;
+.center {
+  text-align: center;
+  margin-top: 3em;
 }
+.full-width-input {
+  width: 100%;
+}
+  .logo {
+    width: 30%;
+    margin: 1em auto;
+    text-align: center;
+  }
+  
+  img {
+    width: 30%;
+  }

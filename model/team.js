@@ -2,18 +2,25 @@
 //   This page refers to development of schema for the team model
 
 const mongoose = require("mongoose")
+const applicant = require("./applicant")
 var Schema = mongoose.Schema;
 
 var teamSchema = new Schema({
     teamID: String,
-    // teamName: String,
-    members: {
+    incidentID: String,
+    leader: String,
+    asstLeader: String,
+    isActive: {
+        type: Boolean,
+        default: 'true',
+      },
+    teamName: String,
+    members: [{
         firstName: String,
         lastName: String,
         email: String,
-        county: String,
-        role: String // drop down { leader, asst. leader, member }
-    }
+        county: String
+    }]
 });
 
 module.exports = mongoose.model('team', teamSchema);

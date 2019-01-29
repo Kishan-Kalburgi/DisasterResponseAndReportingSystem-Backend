@@ -1,0 +1,135 @@
+<mat-toolbar color="primary" class="mat-elevation-z10">
+  <span class="title mat-title">
+    <a routerLink="/dashboard">DRRS</a>
+  </span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/dashboard" routerLinkActive="mat-stroked-button">Dashboard</a>
+  <a mat-button routerLink="/reviewApplication" routerLinkActive="mat-stroked-button">Review Application</a>
+  <a mat-button routerLink="/cop" routerLinkActive="mat-stroked-button">Common Operating Picture</a>
+  <a mat-button (click)="onLogout()">Logout</a>
+</mat-toolbar>
+
+<div class="container">
+  <!-- Header for the Create Incident page -->
+  <h1 class="pageHeading mat-display-1">Create Report</h1>
+  <hr>
+</div>
+
+<div class="createContainer">
+
+  <!-- Form provided to input details for incident details -->
+  <form novalidate (ngSubmit)="onSubmit(createInc)" #createInc="ngForm">
+
+    <div class="form-group">
+
+      <label for="reportedBy">
+        <b>Reported By</b>
+      </label>
+      <input type="text" class="form-control" [ngModel]="reportedBy" name="reportedBy" id="inputreportedBy" placeholder="Enter your email address"
+        required>
+
+
+      <label for="incidentName">
+        <b>Incident Name</b>
+      </label>
+      <input type="text" class="form-control" [ngModel]="incidentName" name="incidentName" id="incidentName" placeholder="Please enter the incident name "
+        required>
+
+      <label for="address">
+        <b>Location</b>
+      </label>
+      <input type="text" class="form-control"  [(ngModel)]="address" name="address" id="address" placeholder="Enter address" required>
+      <!-- <div class="button-row"> -->
+        <br>
+       <button type="button" mat-raised-button color="primary" (click)="fetch()"> Fetch Location Coordinates </button>
+      <!-- </div> -->
+      <br>
+      <label for="lat"> Lat is {{lat}}</label>&nbsp;&nbsp;
+      <label for="lng"> Lng is {{lng}}</label>
+      <br>
+      <label for="casualties">
+        <b>Casualties</b>
+      </label>
+      <ul>
+        <li>Red
+          <input type="number" min=0 class="form-control" [ngModel]="red" name="red" id="red" required>
+        </li>
+        <li>Yellow
+          <input type="number" min=0 class="form-control" [ngModel]="yellow" name="yellow" id="yellow" required>
+        </li>
+        <li>Green
+          <input type="number" min=0 class="form-control" [ngModel]="green" name="green" id="green" required>
+        </li>
+        <li>Black
+          <input type="number" min=0 class="form-control" [ngModel]="black" name="black" id="black" required>
+        </li>
+      </ul>
+
+      <!-- <ion-item>
+          <ion-label color="primary">Structure Damage*</ion-label> -->
+
+      <b>Structural Damage</b>
+      <br>
+      <select name="structuralDamage" ngModel #structuralDamage="ngModel" required>
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+        <option>None</option>
+      </select>
+      <br>
+
+      <b>Fire</b>
+      <br>
+      <select name="fire" ngModel #fire="ngModel" required>
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+        <option>None</option>
+      </select>
+      <br>
+
+      <b>Utilities</b>
+      <br>
+      <select name="utilities" ngModel #utilities="ngModel" required>
+        <option>Electricity</option>
+        <option>Gas</option>
+        <option>Chemical</option>
+        <option>None</option>
+      </select>
+      <br>
+
+      <label for="hazmat">
+        <b>Hazmat</b>
+      </label>
+      <input type="text" class="form-control" [ngModel]="hazmat" name="hazmat" id="hazmat" placeholder="Please describe any hazardious material found  "
+        required>
+      <br>
+
+      <b>Immediate Rescue Team Needed</b>
+      <br>
+      <select name="rescueTeam" ngModel #rescueTeam="ngModel" required>
+        <option>Ambulance</option>
+        <option>Fire Truck</option>
+        <option>Police/Law</option>
+        <option>All</option>
+        <option>None</option>
+      </select>
+      <br>
+
+
+      <label for="others">
+        <b>Additional Information</b>
+      </label>
+      <input type="text" class="form-control" [ngModel]="others" name="others" id="others" placeholder="Please enter the incident name "
+        required>
+    </div>
+
+    <div class="button-row">
+      <button type="submit" class="btn btn-success" [disabled]="!createInc.form.valid">Submit</button>
+      <!-- <button type="submit" class="btn btn-success" >Submit</button> -->
+      <!-- <button mat-raised-button color="primary" type="submit" (click)="submit()"> Create </button> -->
+      <button mat-raised-button color="warn" routerLink="/dashboard"> Cancel </button>
+    </div>
+
+  </form>
+</div>

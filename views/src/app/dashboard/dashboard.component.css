@@ -1,13 +1,25 @@
 /* Assigned to Mouli and Kishan*/
+.container {
+  margin-top: 1em;
+}
+
+.pageHeading {
+  margin: auto;
+}
 
 /* cards */
 .incident-card {
     /* max-width: 235px; */
-    width: 235px;
-    min-height: 397px;
+    width: 255px;
+    height: 350px;
     margin-top: 2em;
 }
-  
+
+.mat-card-image{
+    width: 255px;
+    height: 165px;
+}
+
 /* for buttons - Create incident and Archived Incidents */
 .buttons {
     font-size: 1em;
@@ -25,3 +37,21 @@
 mat-grid-tile {
     background: lightblue;
   }
+
+  .title {
+    margin: auto;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a.mat-button{
+    font-size: 17px;
+  }
+  

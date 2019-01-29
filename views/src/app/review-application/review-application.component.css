@@ -1,18 +1,25 @@
 /* Assigned to kishan */
+.container {
+  margin-top: 1em;
+}
 
-.example-container {
+.pageHeading {
+  margin: auto;
+}
+
+.table-container {
     display: flex;
     flex-direction: column;
     min-width: 300px;
   }
 
-.example-header {
+.filter-header {
   min-height: 64px;
   padding: 8px 24px 0;
 }
-  
+
 .mat-form-field {
-  font-size: 14px;
+  font-size: 20px;
   width: 100%;
 }
 
@@ -22,6 +29,35 @@
 }
 
 .table-header{
-  font-size: 18px;
+  font-size: 22px;
   color: black;
+  font-weight: bold;
+}
+
+.table-cell {
+  font-size: 15px;
+}
+
+.buttons {
+  font-size: 1em;
+}
+
+.button-row button {
+  margin-right: 8px;
+}
+.title {
+  margin: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a.mat-button{
+  font-size: 17px;
 }

@@ -1,31 +1,41 @@
-<!-- 
+<!--
   Assigned to Hemanth
  -->
+ <mat-toolbar color="primary" class="mat-elevation-z10">
+    <span class="title mat-title">
+      <a routerLink="/dashboard">DRRS</a>
+    </span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/dashboard" routerLinkActive="mat-stroked-button">Dashboard</a>
+    <a mat-button routerLink="/reviewApplication" routerLinkActive="mat-stroked-button">Review Application</a>
+    <a mat-button routerLink="/cop" routerLinkActive="mat-stroked-button">Common Operating Picture</a>
+    <a mat-button (click)="onLogout()">Logout</a>
+  </mat-toolbar>
 <div class="container">
   <!-- Header for the Create Incident page -->
-  <h1>Create Incident</h1>
+  <h1 class="pageHeading mat-display-1">Create Incident</h1>
   <hr>
 </div>
 
 <div class="createContainer">
 
   <!-- Form provided to input details for incident details -->
-  <form novalidate (ngSubmit)="onCreate(createInc)" #createInc="ngForm">
+  <form novalidate (submit)="onCreate(createInc)" #createInc="ngForm">
 
     <div class="form-group">
       <label for="incidentName">
         <b>Incident Name</b>
       </label>
       <!-- Input for incident name -->
-      <input type="text" class="form-control" [ngModel]="incident.incidentName" name="incidentName" #incidentName="ngModel" id="inputincidentName"
-        placeholder="Enter incident" required>
-      <!-- 
-      incident name error block 
+      <input type="text" class="form-control" [ngModel]="incident.incidentName" name="incidentName" #incidentName="ngModel"
+        id="inputincidentName" placeholder="Enter incident" required>
+      <!--
+      incident name error block
       by Kishan
     -->
       <!-- Input validation for incident name-->
-      <div *ngIf="(incidentName.invalid && ( incidentName.touched || incidentName.dirty)) || isSubmitted" class="col-sm-6 text-danger">
-        <div *ngIf="incidentName.errors?.required">
+      <div *ngIf="(incidentName.invalid && ( incidentName.touched || incidentName.dirty)) || isSubmitted" class="col-sm-7 text-danger">
+        <div *ngIf="incidentName.errors?.required" class="mat-body-1">
           Please enter the incident Name
         </div>
       </div>
@@ -34,15 +44,15 @@
         <b>Location</b>
       </label>
       <!-- Input field for location name -->
-      <input type="text" class="form-control" [ngModel]="incident.location" name="location" location #location="ngModel" id="inputlocation"
-        placeholder="Enter location" required>
-      <!-- 
-      location error block 
+      <input type="text" class="form-control" [ngModel]="incident.location" name="location" location #location="ngModel"
+        id="inputlocation" placeholder="Enter location" required>
+      <!--
+      location error block
       by Kishan
     -->
       <!-- Input validation for location -->
       <div *ngIf="(location.invalid && ( location.touched || location.dirty)) || isSubmitted" class="col-sm-6 text-danger">
-        <div *ngIf="location.errors?.required">
+        <div *ngIf="location.errors?.required" class="mat-body-1">
           Please enter the location
         </div>
       </div>
@@ -51,10 +61,10 @@
       <label for="date">
         <b>Date</b>
       </label>
-      <input type="text" class="form-control" [ngModel]="incident.date" name="date" #date="ngModel" id="inputdate" value="incident.date"
-        disabled>
-      <!-- 
-      date error block 
+      <input type="text" class="form-control" [ngModel]="incident.date" name="date" #date="ngModel" id="inputdate"
+        value="incident.date" disabled>
+      <!--
+      date error block
       by Kishan
     -->
       <!-- Validtion for date block -->
@@ -68,10 +78,10 @@
       <label for="time">
         <b>Time</b>
       </label>
-      <input type="text" class="form-control" [ngModel]="incident.time" name="time" #time="ngModel" id="inputtime" value="incident.date"
-        disabled>
-      <!-- 
-      time error block 
+      <input type="text" class="form-control" [ngModel]="incident.time" name="time" #time="ngModel" id="inputtime"
+        value="incident.date" disabled>
+      <!--
+      time error block
       by Kishan
     -->
       <!-- Validation for time block -->
@@ -85,22 +95,24 @@
         <b>Description</b>
       </label>
       <!-- Input field for description name -->
-      <textarea type="text" class="form-control" [ngModel]="incident.description" name="description" description #description="ngModel"
-        id="inputdescription" placeholder="Enter description" required></textarea>
-      <!-- 
-        description error block 
+      <textarea type="text" class="form-control" [ngModel]="incident.description" name="description" description
+        #description="ngModel" id="inputdescription" placeholder="Enter description" required></textarea>
+      <!--
+        description error block
         by Kishan
       -->
       <!-- Input validation for description -->
-      <div *ngIf="(description.invalid && ( description.touched || description.dirty)) || isSubmitted" class="col-sm-6 text-danger">
-        <div *ngIf="description.errors?.required">
+      <div *ngIf="(description.invalid && ( description.touched || description.dirty)) || isSubmitted" class="col-sm-7 text-danger">
+        <div *ngIf="description.errors?.required" class="mat-body-1">
           Please enter the description
         </div>
       </div>
     </div>
 
     <!-- Button provided to Create Incident -->
-    <button class="btn primary"> Create </button>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" (click)="dialog()"> Create </button>
+      <button mat-raised-button color="warn" routerLink="/dashboard"> Cancel </button>
+    </div>
   </form>
-    <button class="btn btn-danger" routerLink="/dashboard"> Cancle </button>
 </div>

@@ -7,6 +7,3 @@ module.exports = mongoose.connect("mongodb+srv://admin:admin@cluster0-zlyhn.mong
         console.log("DB error"+  err)
     }
     )
-
-
-

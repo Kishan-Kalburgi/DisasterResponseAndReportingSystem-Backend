@@ -1,27 +1,65 @@
-<!-- 
+<!--
   Assigned to Chandra Mouli
  -->
  <!-- @Author Chandra Mouli Kantipudi -->
  <!-- Header for team details page -->
- <h1>Team1 Members</h1><br>
+ <mat-toolbar color="primary" class="mat-elevation-z10">
+    <span class="title mat-title">
+      <a routerLink="/dashboard">DRRS</a>
+    </span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/dashboard" routerLinkActive="mat-stroked-button">Dashboard</a>
+    <a mat-button routerLink="/reviewApplication" routerLinkActive="mat-stroked-button">Review Application</a>
+    <a mat-button routerLink="/cop" routerLinkActive="mat-stroked-button">Common Operating Picture</a>
+    <a mat-button (click)="onLogout()">Logout</a>
+  </mat-toolbar>
+ <div class="container">
+ <h1 class="pageHeading mat-display-1"><b>{{ team.teamName }}</b></h1> 
+ <hr>
+ <b>Leader:</b> {{ team.leader }}
+ <br>
+ <b>Assistant Leader:</b> {{ team.asstLeader }}
+ <div class="example-container mat-elevation-z8">
  <!-- Table is provide with the team members details -->
-<table class="userTable table-bordered">
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Date of Birth</th>
-    <th>City</th>
-    <th>Phone Number</th>
-    <th>Skills</th>
-  </tr>
-  <tr *ngFor="let applicant of applicants">
-    <td> {{ applicant.firstName }} </td>
-    <td> {{ applicant.lastName }} </td>
-    <td> {{ applicant.email }} </td>
-    <td> {{ applicant.dob | date:'MM-dd-yyyy'}} </td>
-    <td> {{ applicant.city }} </td>
-    <td> {{ applicant.phone }} </td>
-    <td> {{ applicant.skills }} </td>
-  </tr>
-</table>
+ <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- firstName Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <!-- lastName Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- County Column -->
+    <ng-container matColumnDef="county">
+      <th mat-header-cell *matHeaderCellDef> County </th>
+      <td mat-cell *matCellDef="let element"> {{element.county}} </td>
+    </ng-container>
+
+    <!-- Skills Column -->
+    <!-- <ng-container matColumnDef="skills">
+        <th mat-header-cell *matHeaderCellDef> Skills </th>
+        <td mat-cell *matCellDef="let element"> {{element.skills}} </td>
+      </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+ </div>
+ <br>
+ <button mat-raised-button color="warn" [routerLink]="['/teamsById', team.incidentID]"> Back </button>
+  </div>

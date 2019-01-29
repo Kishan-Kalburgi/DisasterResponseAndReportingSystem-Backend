@@ -1,0 +1,62 @@
+.container {
+  margin-top: 1em;
+}
+
+.pageHeading {
+  margin: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+
+.filter-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.table-header{
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+}
+
+.table-cell {
+  font-size: 15px;
+}
+
+td, th {
+  width: 25%;
+}
+.title {
+  margin: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a.mat-button{
+  font-size: 17px;
+}

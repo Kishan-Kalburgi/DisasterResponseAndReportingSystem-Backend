@@ -1,11 +1,21 @@
-<!-- 
+<!--
   Assigned to Chandra mouli
  -->
 <!-- @Author Chandra Mouli Kantipudi -->
+<mat-toolbar color="primary" class="mat-elevation-z10">
+    <span class="title mat-title">
+      <a routerLink="/dashboard">DRRS</a>
+    </span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/dashboard" routerLinkActive="mat-stroked-button">Dashboard</a>
+    <a mat-button routerLink="/reviewApplication" routerLinkActive="mat-stroked-button">Review Application</a>
+    <a mat-button routerLink="/cop" routerLinkActive="mat-stroked-button">Common Operating Picture</a>
+    <a mat-button (click)="onLogout()">Logout</a>
+  </mat-toolbar>
 
 <div class="container">
   <!-- Header for the dashboard page -->
-  <h1>Dashboard</h1>
+  <h1 class="pageHeading mat-display-1">Dashboard</h1>
   <hr>
   <div class="row">
     <div class="col">
@@ -21,18 +31,45 @@
 
   <br>
   <div class="row">
+    <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
     <div *ngFor="let item of incidents">
-      <div class="col-4 text-center">
+      <div class="col-4 text-center" *ngIf="item.isActive">
         <!-- The incident modules are shown using cards. Card has image of incident,
         brief description and two buttons edit and archive -->
-        <mat-card class="incident-card">
-          <a routerLink="/dashboard">
-            <!-- Image of incident -->
-            <img mat-card-image src="assets/images/incidents/img.1.jpg" alt="Earthquake">
-          </a>
+        <mat-card *ngIf="incidents.length > 0 && !isLoading" class="incident-card mat-elevation-z5">
+          <!-- <div [ngSwitch]="item.incidentName">
+            <a *ngSwitchCase="'Earthquake'" routerLink="/dashboard">
+              
+              <img mat-card-image src="assets/images/incidents/img.1.jpg" alt="Earthquake">
+            </a>
+            <a *ngSwitchCase="'Floods'" routerLink="/dashboard">
+              
+              <img mat-card-image src="assets/images/incidents/img.4.jpg" alt="Floods">
+            </a>
+            <a *ngSwitchCase="'Hurricane'" routerLink="/dashboard">
+              
+              <img mat-card-image src="assets/images/incidents/img.5.jpg" alt="Hurricane">
+            </a>
+            <a *ngSwitchCase="'Wildfire'" routerLink="/dashboard">
+              
+              <img mat-card-image src="assets/images/incidents/img.2.jpg" alt="Wildfire">
+            </a>
+            <a *ngSwitchCase="'Tornado'" routerLink="/dashboard">
+              
+              <img mat-card-image src="assets/images/incidents/img.3.jpg" alt="Tornado">
+            </a>
+            <a *ngSwitchDefault routerLink="/dashboard">
+              
+              <img mat-card-image src="assets/images/incidents/img.6.jpg" alt="Others">
+            </a>
+          </div> -->
           <mat-card-content>
             <!-- Name of incident -->
             <h2>{{ item.incidentName }}</h2>
+            <p>
+              <!-- Brief description of incident -->
+              <i class="fa fa-map-marker" aria-hidden="true"></i> {{ item.location }}
+            </p>
             <p class="p-height">
               <!-- Brief description of incident -->
               {{ item.description }}
@@ -40,16 +77,22 @@
           </mat-card-content>
           <mat-card-actions>
             <!-- Report button is provided to retrive report of the incident module-->
-            <button mat-raised-button color="primary" routerLink="/#">Report</button>
+            <!-- <button mat-raised-button color="primary" (click)="report(item.incidentID)">Report</button> -->
+            <button mat-raised-button color="primary" [routerLink] = "['/reportById', item.incidentID]">Reports</button>
             <!-- Team button is provided to view team and its members in the incident module -->
-            <button mat-raised-button color="primary" routerLink="/teams">Team</button>
+            <button mat-raised-button color="primary" [routerLink] = "['/teamsById', item.incidentID]">Teams</button>
+            <!-- <button mat-raised-button color="primary" routerLink="/teams">Team</button> -->
             <!-- Archive button is provided to archive the incident module -->
             <div class="mt-archive">
-              <button mat-raised-button color="warn" routerLink="/#">Archive</button>
+
+            <!-- <button mat-raised-button color="warn"  >Archive</button> -->
+              <button mat-raised-button color="warn" (click)="dialog(item)">Archive</button>
+              <!-- onArchive(item) -->
             </div>
           </mat-card-actions>
         </mat-card>
       </div>
     </div>
+    <p class="mat-title" *ngIf="!incidents?.length">No incident to show!</p>
   </div>
 </div>

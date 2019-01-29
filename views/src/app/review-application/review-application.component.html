@@ -1,52 +1,27 @@
-<!-- 
+<!--
   Assigned to Sreevani and kishan
  -->
-<!-- <table class="userTable table-bordered">
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Date of Birth</th>
-    <th>Address line1</th>
-    <th>Address Line2</th>
-    <th>Country</th>
-    <th>State</th>
-    <th>City</th>
-    <th>County</th>
-    <th>Phone Number</th>
-    <th>Skills</th>
-    <th>License</th>
-    <th>Certification</th>
-    <th>File Upload</th>
-    <th>Limitations</th>
-  </tr>
-  <tr *ngFor="let applicant of applicants">
-      <td> {{ applicant.firstName }} </td>
-      <td> {{ applicant.lastName }} </td>
-      <td> {{ applicant.email }} </td>
-      <td> {{ applicant.dob | date:'MM-dd-yyyy'}} </td>
-      <td> {{ applicant.address1 }} </td>
-      <td> {{ applicant.address2 }} </td>
-      <td> {{ applicant.country }} </td>
-      <td> {{ applicant.state }} </td>
-      <td> {{ applicant.city }} </td>
-      <td> {{ applicant.county }} </td>
-      <td> {{ applicant.phone }} </td>
-      <td> {{ applicant.skills }} </td>
-      <td> {{ applicant.lisence }} </td>
-      <td> {{ applicant.certification }} </td>
-      <td> {{ applicant.fileUpload }} </td>
-      <td> {{ applicant.limitations }} </td>
-  </tr>
-</table> -->
-
+ <mat-toolbar color="primary" class="mat-elevation-z10">
+    <span class="title mat-title">
+      <a routerLink="/dashboard">DRRS</a>
+    </span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/dashboard" routerLinkActive="mat-stroked-button">Dashboard</a>
+    <a mat-button routerLink="/reviewApplication" routerLinkActive="mat-stroked-button">Review Application</a>
+    <a mat-button routerLink="/cop" routerLinkActive="mat-stroked-button">Common Operating Picture</a>
+    <a mat-button (click)="onLogout()">Logout</a>
+  </mat-toolbar>
 <div class="container">
   <!-- Header for Review Applications -->
-<h1>Review Applications</h1>
+<h1 class="pageHeading mat-display-1">Review Applications</h1>
 <hr>
-
-<div class="example-container mat-elevation-z8">
-  <div class="example-header">
+<div class="button-row">
+ <button routerLink="/acceptedApplicants" mat-raised-button color="primary">Accepted</button>
+ <button routerLink="/rejectedApplicants" mat-raised-button color="primary" color="warn">Rejected</button>
+</div>
+<br>
+<div class="table-container mat-elevation-z8">
+  <div class="filter-header">
     <mat-form-field>
       <!-- Filter provided to filter the table data -->
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -60,43 +35,40 @@
     <!-- First Name Column -->
     <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> First Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.firstName }} </mat-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.firstName }} </mat-cell>
     </ng-container>
 
     <!-- Last Name Column -->
     <ng-container matColumnDef="lastName">
       <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Last Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.lastName }} </mat-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.lastName }} </mat-cell>
     </ng-container>
 
     <!-- Email Column -->
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Email </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.email}} </mat-cell>
     </ng-container>
 
     <!-- Date of Birth Column -->
     <ng-container matColumnDef="dob">
       <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Date of Birth </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.dob}} </mat-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.dob}} </mat-cell>
     </ng-container>
 
     <!-- County Column -->
     <ng-container matColumnDef="county">
       <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> County </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.county}} </mat-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.county}} </mat-cell>
     </ng-container>
 
     <!-- Skills Column -->
     <ng-container matColumnDef="skills">
-      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> skills </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.skills}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Skills </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.skills}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)"></mat-row>
   </mat-table>
-  <!-- <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
-  </mat-paginator> -->
-</div>
 </div>

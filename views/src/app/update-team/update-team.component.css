@@ -1,0 +1,66 @@
+.primary{
+  background: #673ab7;
+  color: white;
+  font-size: 1em;
+}
+
+.container {
+  margin-top: 1em;
+}
+
+.pageHeading {
+  margin: auto;
+}
+
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.filter-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field-filter {
+  font-size: 20px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+.button-row button {
+  margin-right: 8px;
+}
+
+.mat-header-cell {
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+}
+
+.mat-cell {
+  padding: 12px;
+  text-align: center;
+}
+.title {
+  margin: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a.mat-button{
+  font-size: 17px;
+}

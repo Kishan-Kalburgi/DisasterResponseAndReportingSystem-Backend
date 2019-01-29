@@ -1,0 +1,70 @@
+<mat-toolbar color="primary" class="mat-elevation-z10">
+  <span class="title mat-title">
+    <a routerLink="/dashboard">DRRS</a>
+  </span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/dashboard" routerLinkActive="mat-stroked-button">Dashboard</a>
+  <a mat-button routerLink="/reviewApplication" routerLinkActive="mat-stroked-button">Review Application</a>
+  <a mat-button routerLink="/cop" routerLinkActive="mat-stroked-button">Common Operating Picture</a>
+  <a mat-button (click)="onLogout()">Logout</a>
+</mat-toolbar>
+<div class="container">
+  <!-- Header for Review Applications -->
+<h1 class="pageHeading mat-display-1">Accepted Applicants</h1>
+<hr>
+<button mat-raised-button color="warn" routerLink = "/reviewApplication"><i class="fas fa-long-arrow-alt-left fa-3x"></i></button>
+<br>
+<br>
+<div class="table-container mat-elevation-z8">
+  <div class="filter-header">
+    <mat-form-field>
+      <!-- Filter provided to filter the table data -->
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- First Name Column -->
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.firstName }} </mat-cell>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.lastName }} </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <!-- Date of Birth Column -->
+    <ng-container matColumnDef="dob">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Date of Birth </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.dob}} </mat-cell>
+    </ng-container>
+
+    <!-- County Column -->
+    <ng-container matColumnDef="county">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> County </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.county}} </mat-cell>
+    </ng-container>
+
+    <!-- Skills Column -->
+    <ng-container matColumnDef="skills">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Skills </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{element.skills}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)"></mat-row>
+  </mat-table>
+</div>
+</div>

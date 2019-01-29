@@ -2,21 +2,55 @@
   Assigned to Chandra Mouli
  -->
  <!-- @Author Chandra Mouli Kantipudi -->
+ <mat-toolbar color="primary" class="mat-elevation-z10">
+    <span class="title mat-title">
+      <a class="b" routerLink="/dashboard">DRRS</a>
+    </span>
+    <span class="spacer"></span>
+    <a class="b" mat-button routerLink="/dashboard" routerLinkActive="mat-stroked-button">Dashboard</a>
+    <a class="b" mat-button routerLink="/reviewApplication" routerLinkActive="mat-stroked-button">Review Application</a>
+    <a class="b" mat-button routerLink="/cop" routerLinkActive="mat-stroked-button">Common Operating Picture</a>
+    <a class="b" mat-button (click)="onLogout()">Logout</a>
+  </mat-toolbar>
  <div class="container">
     <!-- Header for the dashboard page -->
- <h1>Teams</h1>
+ <h1 class="pageHeading mat-display-1">Teams of {{incidentID}}</h1>
  <hr>
+ <div class="row">
+    <div class="col">
  <!-- Create team button provided to route to create team page -->
- <button routerLink = "/createTeams" mat-raised-button color = "primary">Create Team</button>
- <br><br>
+ <!-- <button [routerLink] = "['createTeamsByID/', incidentID]" mat-raised-button color = "primary" >Create Team</button> -->
+ <button  mat-raised-button color = "primary" [routerLink] = "['/createTeams', incidentID]">Create Team</button>
+    </div>
+ </div>
+
+ <br>
+
+ <div class ="row">
+   <!-- <mat-spinner *ngIf = "item.isActive"></mat-spinner> -->
+   <div *ngFor="let item of teams; let i = index">
+     <div class="col-4 text-center" *ngIf = "item.isActive">
  <!-- The team modules are shown using cards. Card has image of team and team name -->
- <mat-card class="example-card" >
+ <mat-card *ngIf ="teams.length > 0 && !isLoading" class="incident-card mat-elevation-z5" >
     <!-- Image for team is provided when clicked on image it redirects to the team page -->
-   <a routerLink = "/team1Details">
-   <img mat-card-image src="assets/images/teams/img1.jpg" alt="Team1"></a>
+   <!-- <a [routerLink] = "['/team1Details', item._id]">
+   <img mat-card-image [src]="'assets/images/teams/'+ (i%5) +'.jpg'" alt="Team1">
+   </a> -->
    <mat-card-content >
      <!-- Team name -->
-     <h2>Team 1</h2>
+     <a [routerLink] = "['/team1Details', item._id]">
+     <h2><b>{{ item.teamName }}</b></h2>
+     </a>
+     <p><b>Leader: {{ item.leader }}</b><br>
+     <b>AsstLeader: {{ item.asstLeader }}</b></p>
    </mat-card-content>
+   <mat-card-actions>
+      <button mat-raised-button color="primary" [routerLink] = "['/updateTeam', item._id]">Update</button>
+      <button mat-raised-button color="primary" color="warn" (click)="delette(item)">Delete</button>
+      </mat-card-actions>
  </mat-card>
+     </div>
+   </div>
+   <p class="mat-title" *ngIf="!teams?.length">No Teams are Created for this Incident!</p>
+ </div>
  </div>

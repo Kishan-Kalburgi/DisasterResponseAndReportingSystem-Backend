@@ -17,7 +17,7 @@ export class Applicant {
     licenseNumber: string;
     files: string;
     limitations: string;
-    pushNotification: string; 
+    pushNotification: string;
 
     constructor(values: Object = {}) {
         /*Constructor initialization*/

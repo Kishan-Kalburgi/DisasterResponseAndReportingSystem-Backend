@@ -1,0 +1,39 @@
+.container {
+  margin-top: 1em;
+}
+
+.pageHeading {
+  margin: auto;
+}
+
+.createContainer {
+    padding-left: 30em;
+    padding-right: 29em;
+}
+
+.primary{
+    background: #673ab7;
+    color: violet;
+    font-size: 1em;
+}
+
+.button-row button {
+  margin-right: 8px;
+}
+.title {
+  margin: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a.mat-button{
+  font-size: 17px;
+}
+

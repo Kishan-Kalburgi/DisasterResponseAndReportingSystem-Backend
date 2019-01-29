@@ -1,0 +1,34 @@
+<div>
+  <h1 class="pageHeading mat-display-1">Report Details:</h1>
+  <!-- mat-dialog-title -->
+  <hr>
+  <mat-dialog-content>
+    <!-- <div class="container"> -->
+<div class="row text-style">
+  <div class="col">
+    <p><b>Reported By: </b>{{ report.reportedBy }}</p>
+    <p><b>Incident Name: </b>{{ report.incidentName }}</p>
+    <p><b>location: </b>{{ report.location.lat + " " + report.location.lng }}</p>
+    <h3><u>Casualties: </u></h3>
+    <p class="text-danger font-weight-bold">Red: {{ report.casualties.red }}</p> 
+    <p class="text-warning font-weight-bold">Yellow: {{ report.casualties.yellow }}</p> 
+    <p class="text-success font-weight-bold">Green: {{ report.casualties.green }}</p> 
+    <p class="text-dark font-weight-bold">Black: {{ report.casualties.black }}</p> 
+  </div>
+  <div class="col">
+    <p><b>Structural Damage: </b> {{ report.structuralDamage }} </p>
+    <p><b>Fire: </b> {{ report.fire }} </p>
+    <p><b>Utilities: </b>{{ report.utilities }}</p>
+    <p><b>Hazmat: </b>{{ report.hazmat }}</p>
+    <p><b>Others: </b>{{ report.others }}</p>    
+    <p *ngIf='report.files'><b>Certification: </b><a href={{temp}}>{{ filename }}</a></p>
+    <p *ngIf='!report.files'><b>Certification: </b>No files uploaded</p>
+  </div>
+</div>
+
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onOk()">OK</button>
+</mat-dialog-actions>
+</div>

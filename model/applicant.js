@@ -16,7 +16,9 @@ var applicantSchema = new mongoose.Schema({
     licenseNumber: String,
     files: String,
     limitations: String,
-    pushNotification: String  
+    pushNotification: String,
+    // newField:String,
+    role: { type: String, default: "Applicant" }
 });
 
 module.exports = mongoose.model('applicant', applicantSchema);
